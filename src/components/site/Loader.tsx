@@ -41,13 +41,10 @@ export function Loader() {
     };
     window.addEventListener("trigger-ps-loader", handleTrigger);
 
-    // Initial load check
-    if (sessionStorage.getItem("ps-loader-seen") !== "1") {
-      sessionStorage.setItem("ps-loader-seen", "1");
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!reduced) {
-        runLoader(2800);
-      }
+    // Initial load & hard refresh animation
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduced) {
+      runLoader(2200);
     }
 
     return () => {
