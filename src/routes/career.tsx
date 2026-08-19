@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useRef, useState } from "react";
 import { z } from "zod";
 import { Award, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartPulse, Loader2, MapPin, Users } from "lucide-react";
@@ -179,7 +178,6 @@ function CareerPage() {
 type Errors = Record<string, string | undefined>;
 
 function ApplicationForm() {
-  const submit = useServerFn(submitJobApplication);
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [resume, setResume] = useState<File | null>(null);
@@ -216,7 +214,7 @@ function ApplicationForm() {
     setErrors({});
     setState("loading");
     try {
-      await submit({ data: payload });
+      await submitJobApplication(payload);
       setState("success");
     } catch {
       setState("error");

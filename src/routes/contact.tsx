@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import type { ZodError } from "zod";
 import { CheckCircle2, ExternalLink, Loader2, Mail, MapPin, Phone, Clock, ShieldCheck, Send } from "lucide-react";
@@ -187,7 +186,6 @@ function ContactPage() {
 }
 
 function ContactForm() {
-  const submit = useServerFn(submitContactEnquiry);
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -210,7 +208,7 @@ function ContactForm() {
     setErrors({});
     setState("loading");
     try {
-      await submit({ data: payload });
+      await submitContactEnquiry(payload);
       setState("success");
     } catch {
       setState("error");

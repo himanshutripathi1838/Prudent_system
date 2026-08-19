@@ -1,4 +1,3 @@
-import { ClientOnly } from "@tanstack/react-router";
 import { Suspense, lazy, useEffect, useState } from "react";
 
 const TechScene = lazy(() => import("./TechScene"));
@@ -16,13 +15,11 @@ export function SceneMount({ className }: { className?: string }) {
 
   return (
     <div className={className} aria-hidden>
-      <ClientOnly fallback={null}>
-        {enabled ? (
-          <Suspense fallback={null}>
-            <TechScene simplified={simplified} />
-          </Suspense>
-        ) : null}
-      </ClientOnly>
+      {enabled ? (
+        <Suspense fallback={null}>
+          <TechScene simplified={simplified} />
+        </Suspense>
+      ) : null}
     </div>
   );
 }
