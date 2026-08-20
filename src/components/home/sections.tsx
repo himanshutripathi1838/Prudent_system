@@ -18,6 +18,8 @@ import { ACCELERATORS, PRODUCTS, type Product } from "@/data/products";
 import { TECH_TAGS } from "@/data/expertise";
 import { CLIENTS } from "@/data/company";
 
+import { WordsStagger } from "@/components/ui/words-stagger";
+
 const ICONS: Record<string, typeof Cpu> = {
   Router, Code2, LayoutDashboard, BrainCircuit, Cpu, Cloud, Database, Network, ShieldCheck, Activity, Sparkles, GitBranch,
 };
@@ -44,28 +46,42 @@ function SolutionDetailModal({ solution, onClose }: { solution: Solution | null;
               <span className="font-mono text-[10px] uppercase tracking-wider text-primary">{solution.category}</span>
               <MaturityBadge label={solution.maturity} />
             </div>
-            <h2 className="mt-2 font-display text-2xl font-semibold">{solution.title}</h2>
+            <WordsStagger key={`h-title-${solution.slug}`} className="mt-2 font-display text-2xl font-semibold text-foreground">
+              {solution.title}
+            </WordsStagger>
           </>
         ) : null
       }
     >
       {solution ? (
         <div className="space-y-6 text-sm">
-          <Block title="Problem"><p className="text-muted-foreground">{solution.problem}</p></Block>
-          <Block title="Solution & Approach"><p className="text-muted-foreground">{solution.approach}</p></Block>
+          <Block title="Problem">
+            <WordsStagger key={`h-prob-${solution.slug}`} className="text-muted-foreground leading-relaxed" stagger={0.04} speed={0.3}>
+              {solution.problem}
+            </WordsStagger>
+          </Block>
+          <Block title="Solution & Approach">
+            <WordsStagger key={`h-appr-${solution.slug}`} className="text-muted-foreground leading-relaxed" stagger={0.04} speed={0.3}>
+              {solution.approach}
+            </WordsStagger>
+          </Block>
 
           {solution.scaleInfo || solution.otaCapability ? (
             <div className="grid gap-3 rounded-lg border border-primary/20 bg-primary/5 p-4 sm:grid-cols-2">
               {solution.scaleInfo ? (
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Deployment & Scale</p>
-                  <p className="mt-1 text-xs text-foreground/90">{solution.scaleInfo}</p>
+                  <WordsStagger key={`h-scale-${solution.slug}`} className="mt-1 text-xs text-foreground/90 leading-relaxed" stagger={0.04} speed={0.3}>
+                    {solution.scaleInfo}
+                  </WordsStagger>
                 </div>
               ) : null}
               {solution.otaCapability ? (
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-wider text-primary">OTA & Remote Management</p>
-                  <p className="mt-1 text-xs text-foreground/90">{solution.otaCapability}</p>
+                  <WordsStagger key={`h-ota-${solution.slug}`} className="mt-1 text-xs text-foreground/90 leading-relaxed" stagger={0.04} speed={0.3}>
+                    {solution.otaCapability}
+                  </WordsStagger>
                 </div>
               ) : null}
             </div>
