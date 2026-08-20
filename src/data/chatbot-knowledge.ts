@@ -16,7 +16,7 @@ export const QUICK_QUESTIONS = [
   "What is Dual Partition A/B OTA?",
 ];
 
-const GREETINGS = ["hi", "hello", "hey", "hlo", "namaste", "good morning", "good afternoon", "good evening", "greetings", "hiii", "helo", "hy"];
+const GREETINGS = ["hi", "hello", "hey", "hlo", "namaste", "good morning", "good afternoon", "good evening", "good night", "greetings", "hiii", "helo", "hy"];
 
 interface TopicAnswer {
   keywords: string[];
@@ -60,70 +60,53 @@ const TOPICS: TopicAnswer[] = [
     shortResponse: `**IoT (Internet of Things)** connects physical devices and sensors to the internet to collect and exchange data.\n\n**Industrial IoT (IIoT)** applies IoT to factory machines and railways to track real-time OEE, power draw, and prevent machine breakdowns.`,
   },
 
-  // 7. AI & Machine Learning
+  // 7. DAQ & Data Acquisition
   {
-    keywords: ["ai", "ml", "aiml", "artificial intelligence", "machine learning", "deep learning", "neural network", "computer vision"],
-    shortResponse: `**Artificial Intelligence (AI)** & **Machine Learning (ML)** train algorithms on sensor time-series data to detect abnormal patterns and predict machine failures before they happen.\n\nExplore our [AI Predictive Maintenance Solution](/solutions).`,
+    keywords: ["daq", "data acquisition", "acquisition", "analog input"],
+    shortResponse: `**Data Acquisition (DAQ)** samples signals from sensors (vibration, temperature, pressure), conditions raw electrical signals, and converts them into digital parameters for edge AI & cloud analysis.`,
   },
 
-  // 8. Edge AI
+  // 8. OTA & Remote Firmware Update
   {
-    keywords: ["edge ai", "edge computing", "edge vs cloud"],
-    shortResponse: `**Edge AI** runs machine learning models (like TensorFlow Lite) directly on local IoT Gateways or microcontrollers instead of sending raw data to the cloud, giving instant (< 5ms) offline anomaly alerts.`,
+    keywords: ["ota", "firmware", "over the air", "a/b partition", "rollback"],
+    shortResponse: `**OTA (Over-The-Air)** allows remote software & AI model updates without physical site visits.\n\n**Failsafe A/B Partition**: If an update fails, the system automatically rolls back to the working partition to prevent device bricking.`,
   },
 
-  // 9. DAQ (Data Acquisition)
+  // 9. Edge AI & Machine Learning
   {
-    keywords: ["daq", "data acquisition", "signal", "adc", "4-20ma"],
-    shortResponse: `A **Data Acquisition (DAQ)** system collects physical signals (temperature, vibration, pressure, current) from sensors and converts them into digital data for IoT Gateways and dashboards.\n\nLearn more in [Solutions](/solutions).`,
+    keywords: ["edge ai", "ai", "ml", "machine learning", "tensorflow", "anomaly"],
+    shortResponse: `**Edge AI** runs lightweight AI models (.tflite) directly on local gateways/controllers. It identifies vibration anomalies & bearing faults instantly without waiting for cloud roundtrips.`,
   },
 
-  // 10. Industry 4.0 & MSME Retrofit
+  // 10. Railway Systems
   {
-    keywords: ["industry 4.0", "smart manufacturing", "msme", "retrofit", "cost", "price", "kitne ka"],
-    shortResponse: `**Industry 4.0** connects factory machines with sensors and AI to automate monitoring and improve production.\n\n💰 **MSME Retrofit Cost**: **₹2–10 Lakh** for ~10 machines without replacing existing equipment!\nCheck out [Industry 4.0 Retrofit](/solutions).`,
-  },
-
-  // 11. OTA & Dual Partition A/B
-  {
-    keywords: ["ota", "firmware", "dual partition", "a/b", "rollback", "update"],
-    shortResponse: `**OTA (Over-The-Air)** allows remote firmware updates on deployed field devices.\n\n🛡️ **Dual-Partition (A/B)** memory split writes new code to Partition B while A runs. If update fails, it automatically rolls back to A so devices never brick!`,
-  },
-
-  // 12. Railway Products
-  {
-    keywords: ["railway", "gps oms", "speedometer", "locomotive", "train"],
-    shortResponse: `We engineer rugged **Railway Electronics**:\n1. 🛰️ **GPS OMS**: GNSS track & fleet position monitoring.\n2. 📟 **Digital Speedometer**: Cab speed display & data logging.\n\n🏆 Awarded *10 Most Promising Railway Providers 2023* by CIO Tech Outlook.`,
-  },
-
-  // 13. Industrial Protocols
-  {
-    keywords: ["mqtt", "modbus", "rs485", "can bus", "lora", "protocol", "opc-ua"],
-    shortResponse: `**Industrial Protocols:**\n- **Modbus RTU / RS485**: Serial standard for PLCs & energy meters.\n- **CAN Bus**: High-reliability automotive & railway bus.\n- **MQTT**: Lightweight telemetry protocol for IoT cloud streaming.\n- **LoRaWAN**: Long-range, low-power wireless.`,
+    keywords: ["railway", "railways", "locomotive", "track", "speedometer", "oliver", "oms"],
+    shortResponse: `**Prudent Systems Railway Portfolio**:\n- 🚆 **GPS OMS**: Track oscillation & location tracking.\n- 📟 **Digital Speedometer**: Cab display & driver memory log.\n- 📊 **OLIVER G & GHX**: Track geometry & multi-axis acceleration recording.\n\nSee full specs on our [Solutions Page](/solutions).`,
   },
 ];
 
-// Domains we answer: IoT, AI/ML, Web Development, Prudent Systems
-const ALLOWED_DOMAIN_KEYWORDS = [
-  "iot", "iiot", "sensor", "sensors", "hardware", "microcontroller", "mcu", "esp32", "stm32", "embedded",
-  "gateway", "daq", "signal", "ota", "firmware", "protocol", "modbus", "mqtt", "rs485", "can", "lora",
-  "ai", "ml", "aiml", "artificial intelligence", "machine learning", "deep learning", "edge ai", "predictive", "vibration", "fft",
-  "web", "website", "development", "react", "frontend", "backend", "dashboard", "api", "html", "css", "javascript", "typescript",
-  "prudent", "company", "about", "bhopal", "contact", "phone", "email", "address", "railway", "industry 4.0", "oee", "msme", "retrofit"
+export const ALLOWED_DOMAIN_KEYWORDS = [
+  "iot", "iiot", "ai", "ml", "daq", "ota", "web", "react", "dashboard", "sensor",
+  "embedded", "prudent", "railway", "speedometer", "oliver", "oms", "firmware",
+  "microcontroller", "esp32", "stm32", "manufacturing", "industry 4.0", "bhopal",
+  "contact", "phone", "email", "about", "solution", "product", "machine", "vibration",
+  "temperature", "energy", "digital twin", "predictive", "quality", "tracking", "water",
+  "weather", "light", "toe load", "thermometer", "train", "bogie", "route", "greetings",
+  "hi", "hello", "hey", "hlo", "namaste", "good morning", "good afternoon", "good evening", "good night"
 ];
 
-const SYSTEM_INSTRUCTION = `You are Prudent AI, an AI Assistant for Prudent Systems Pvt. Ltd.
-STRICT DOMAIN SCOPE RULES:
-1. You MUST ONLY answer questions related to:
-   - IoT (Internet of Things, sensors, protocols, gateways, DAQ, OTA, embedded hardware)
-   - AI/ML (Artificial Intelligence, Machine Learning, Edge AI, Predictive Maintenance, Computer Vision)
-   - Web Development (Web apps, dashboards, APIs, React, frontend, backend, cloud systems)
-   - Prudent Systems company, products, and contact info.
-2. If a question is OUTSIDE these domains (e.g. movies, cooking, sports, general politics, trivia), reply politely with:
-   "Sorry! 🙏 I am trained to assist only with IoT, AI/ML, Web Development, and Prudent Systems solutions. Please ask a question related to these domains!"
-3. If the user greets with "Hi", "Hello", "Hey", "Hlo", "Namaste", reply EXACTLY with:
-   "Hi! Hello! 👋 Welcome to Prudent Systems!\nHow can I help you today? Ask me any question about IoT, AI/ML, DAQ, OTA, or our solutions!"
-4. Keep your domain answers SHORT, CRISP, and ACCURATE (2-4 concise lines/bullet points).`;
+export function getTimeBasedGreeting(): string {
+  const hour = new Date().getHours();
+  let timePrefix = "Good Morning! 🌅";
+  if (hour >= 12 && hour < 17) {
+    timePrefix = "Good Afternoon! ☀️";
+  } else if (hour >= 17 && hour < 21) {
+    timePrefix = "Good Evening! 🌆";
+  } else if (hour >= 21 || hour < 5) {
+    timePrefix = "Good Night! 🌙";
+  }
+  return `${timePrefix} Hi! Hello! 👋 Welcome to Prudent Systems! How can I help you today? Ask me any question about IoT, AI/ML, DAQ, OTA, or our solutions!`;
+}
 
 export function isGreeting(userQuery: string): boolean {
   const q = userQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "");
@@ -137,17 +120,14 @@ export function isGreeting(userQuery: string): boolean {
 
   const GREETING_REGEX = /^(hi+|hello+|helo+|hey+|hlo+|hlw+|hy+|namaste+|namaskar+|greetings+)(\s.*)?$/i;
   if (GREETING_REGEX.test(q)) return true;
-  if (q.startsWith("good morning") || q.startsWith("good afternoon") || q.startsWith("good evening")) return true;
+  if (q.startsWith("good morning") || q.startsWith("good afternoon") || q.startsWith("good evening") || q.startsWith("good night")) return true;
   return false;
 }
 
-export const EXACT_GREETING_RESPONSE =
-  "Hi! Hello! 👋 Welcome to Prudent Systems! How can I help you today? Ask me any question about IoT, AI/ML, DAQ, OTA, or our solutions!";
-
 export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatMessage[] = []): Promise<string> {
-  // Instant Greeting Check with exact requested text
+  // Instant Greeting Check with time-based dynamic greeting
   if (isGreeting(userQuery)) {
-    return EXACT_GREETING_RESPONSE;
+    return getTimeBasedGreeting();
   }
 
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
@@ -157,7 +137,7 @@ export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatM
       const contents = [
         {
           role: "user",
-          parts: [{ text: `${SYSTEM_INSTRUCTION}\n\nUser Question: ${userQuery}\n\nProvide a SHORT, CRISP response according to the domain rules:` }],
+          parts: [{ text: `User Question: ${userQuery}\n\nProvide a SHORT, CRISP response:` }],
         },
       ];
 
@@ -188,9 +168,9 @@ export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatM
 export function getBotResponse(userQuery: string): string {
   const query = userQuery.trim().toLowerCase();
 
-  // 1. Exact Friendly Greeting Check
+  // 1. Time-Based Greeting Check
   if (isGreeting(userQuery)) {
-    return EXACT_GREETING_RESPONSE;
+    return getTimeBasedGreeting();
   }
 
   // 2. Strict Domain Relevance Check

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { Bot, MessageSquare, X, Send, RotateCcw, Sparkles, ChevronDown, User } from "lucide-react";
-import { getBotResponse, getGeminiBotResponse, EXACT_GREETING_RESPONSE, QUICK_QUESTIONS, type ChatMessage } from "@/data/chatbot-knowledge";
+import { getBotResponse, getGeminiBotResponse, getTimeBasedGreeting, QUICK_QUESTIONS, type ChatMessage } from "@/data/chatbot-knowledge";
 import { scrollToTop } from "@/components/site/SmoothScroll";
 
 export function Chatbot() {
@@ -11,7 +11,7 @@ export function Chatbot() {
     {
       id: "welcome-1",
       sender: "bot",
-      text: EXACT_GREETING_RESPONSE,
+      text: getTimeBasedGreeting(),
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
