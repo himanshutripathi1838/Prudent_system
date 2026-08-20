@@ -8,12 +8,12 @@ export interface ChatMessage {
 }
 
 export const QUICK_QUESTIONS = [
-  "What is Industry 4.0?",
   "What is an IoT Gateway?",
-  "What is Dual Partition A/B OTA?",
-  "What is OEE?",
-  "What is MSME Machine Retrofit?",
-  "What is Edge AI?",
+  "What are the 7 Functions of an IoT Gateway?",
+  "How does Safe A/B Partition OTA work?",
+  "What is the 12-Step OTA Workflow?",
+  "What is AI Model OTA?",
+  "What is Delta OTA vs Full OTA?",
 ];
 
 interface TopicAnswer {
@@ -22,229 +22,231 @@ interface TopicAnswer {
 }
 
 const TOPICS: TopicAnswer[] = [
-  // 1. Industry 4.0 & Definition (PDF 1 - Page 1)
+  // ==========================================
+  // EXHAUSTIVE 28-PAGE IOT GATEWAY & OTA PDF KNOWLEDGE
+  // ==========================================
+
+  // 1. Definition of IoT Gateway (Page 1)
   {
-    keywords: ["industry 4.0", "fourth industrial revolution", "4th industrial revolution", "smart manufacturing", "what is industry 4.0"],
-    shortResponse: `**Industry 4.0 (Fourth Industrial Revolution)** transforms traditional factories into smart, connected, data-driven manufacturing systems.\n\n**Core Equation:**\n\`Machines + Sensors + Connectivity + Data + AI = Smart Manufacturing\`\n\nMachines, sensors, people, and software connect so factories collect data, analyze it, and automatically take corrective action.`,
+    keywords: ["what is an iot gateway", "iot gateway definition", "gateway simple terms", "bridge field sensors"],
+    shortResponse: `An **IoT Gateway** is a hardware & software device acting as a bridge between field sensors/machines and the cloud platform.\n\n**Simple Terms:**\n\`Sensors & Machines → IoT Gateway → Cloud Dashboard / Mobile App\`\n\nIt collects data from multiple sensors, processes it locally, and securely transmits it to the cloud.`,
   },
 
-  // 2. Evolution of Industry (PDF 1 - Page 1)
+  // 2. Why IoT Gateway is Needed & Protocol Conversion (Page 1 & 3)
   {
-    keywords: ["evolution", "industry 1.0", "industry 2.0", "industry 3.0", "generations of industry", "history of industry"],
-    shortResponse: `**Evolution of Industry:**\n- ⚙️ **Industry 1.0**: Steam & Mechanical Power (Mechanization)\n- ⚡ **Industry 2.0**: Electricity & Assembly Lines (Mass Production)\n- 💻 **Industry 3.0**: Electronics & Computers (Automation)\n- 🌐 **Industry 4.0**: IoT, AI, Cloud, Robotics (Smart Connected Manufacturing)`,
+    keywords: ["why iot gateway needed", "protocol conversion", "modbus rtu", "rs485", "can bus", "zigbee", "lora", "bluetooth", "mqtt", "https", "websockets"],
+    shortResponse: `**Why an IoT Gateway is Needed:**\nIndustrial sensors use field protocols (**Modbus RTU, RS485, CAN Bus, ZigBee, LoRa, Bluetooth**), while cloud platforms use internet protocols (**MQTT, HTTPS, TCP/IP, WebSockets**).\n\n**Protocol Mapping:**\n- RS485 $\\rightarrow$ Converts to MQTT\n- Modbus $\\rightarrow$ Converts to HTTPS\n- CAN Bus $\\rightarrow$ Converts to TCP/IP`,
   },
 
-  // 3. How Industry 4.0 Works / Architecture Flow (PDF 1 - Page 1 & 2)
+  // 3. Typical Gateway Architecture (Page 1 & 2)
   {
-    keywords: ["how industry 4.0 works", "industry 4.0 architecture", "system flow", "data flow", "how it works"],
-    shortResponse: `**Industry 4.0 System Flow:**\n\`MACHINES → SENSORS → DAQ → EDGE DEVICE / CONTROLLER → LOCAL / CLOUD PLATFORM → AI/ML ANALYTICS → DECISION / ALERT → AUTOMATIC ACTION\`\n\n**Example:** Motor vibration increases $\\rightarrow$ Edge DAQ samples data $\\rightarrow$ AI detects bearing wear $\\rightarrow$ Instant alert sent before motor fails.`,
+    keywords: ["gateway architecture", "ot connectivity", "it connectivity", "control center", "scada", "remote i/o"],
+    shortResponse: `**IoT Gateway Architecture:**\n\`Control Center (SCADA / Dashboard) ← IT Connectivity ← IIoT Gateway (Wired/Wireless, Routing, Local Storage, Edge AI) ← OT Connectivity ← Remote I/O (DIO/AIO), Field Devices\``,
   },
 
-  // 4. Industrial IoT (IIoT) & Field Sensors (PDF 1 - Page 2)
+  // 4. Field Devices & Sensors Connected to Gateway (Page 2)
   {
-    keywords: ["iiot", "industrial iot", "field sensors", "industrial sensors"],
-    shortResponse: `**Industrial IoT (IIoT)** connects machines and sensors to an industrial network.\n\n**Key Field Sensors:**\n- 🌡️ Temperature Sensors\n- 📳 Vibration Sensors (IMU / Accelerometers)\n- 🗜️ Pressure Transducers (4–20 mA)\n- ⚡ Energy Meters & CT Coils\n- 🌊 Flow Meters & Water Level Probes\n- 📊 Machine Status Relays`,
+    keywords: ["field devices", "gateway sensors", "sensors connected to gateway"],
+    shortResponse: `**Field Devices Connected to IoT Gateway:**\n- 📳 Vibration Sensors (IMU)\n- 🌡️ Temperature Sensors\n- ⚡ Current Sensors (CT Coils)\n- 📍 GPS Modules\n- 🌤️ Weather Sensors (Anemometers)\n- 🌊 Water Level Probes\n- 📷 Line Cameras`,
   },
 
-  // 5. Data Acquisition Systems (DAQ) (PDF 1 - Page 2 & Page 8)
+  // 5. 7 Major Functions of an IoT Gateway (Page 3 - 5)
   {
-    keywords: ["daq", "data acquisition", "daq system", "what is daq", "analog input", "high-speed adc"],
-    shortResponse: `**Data Acquisition (DAQ)** collects raw physical signals from sensors and converts them into clean digital data.\n\n**DAQ Mapping Bridge:**\n- Temperature $\\rightarrow$ Analog Input $\\rightarrow$ Live Dashboard\n- Vibration $\\rightarrow$ High-Speed ADC $\\rightarrow$ Edge AI Predictive Maintenance\n- Current $\\rightarrow$ CT Input $\rightarrow$ Energy Analytics\n- Pressure $\rightarrow$ 4–20 mA Loop $\rightarrow$ Process Control\n- Machine Relay $\\rightarrow$ Digital Input $\rightarrow$ Real-time OEE`,
+    keywords: ["7 functions", "major functions", "functions of iot gateway", "what does gateway do"],
+    shortResponse: `**7 Major Functions of an IoT Gateway:**\n1. **Data Collection**: Collects from IMU, Temp, GPS, PLCs (e.g. 50 motors, 20 pumps, 10 compressors)\n2. **Protocol Conversion**: Modbus/RS485/CAN $\\rightarrow$ MQTT/HTTPS\n3. **Edge Computing**: Computes RMS, Peak vibration & FFT spectrum locally\n4. **Local AI Processing**: Edge AI bearing fault alerts\n5. **Local Data Storage**: Store-and-forward local logging during internet failure\n6. **Alert Generation**: Direct local Buzzer, SMS & WhatsApp alerts\n7. **Device Management**: Remote firmware updates, config & diagnostics`,
   },
 
-  // 6. Edge Computing (PDF 1 - Page 3 & PDF 2 - Page 3)
+  // 6. Edge Computing Details & Benefits (Page 3 & 4)
   {
-    keywords: ["edge computing", "edge processing", "edge device", "fft", "rms", "local processing"],
-    shortResponse: `**Edge Computing** processes high-frequency data locally at the machine node instead of sending raw data to the cloud.\n\n**Flow:**\n\`Vibration Sensor → Edge Computer → FFT / RMS → Abnormal Vibration Detected → Immediate Local Alarm\`\n\n**Benefits:** Sub-millisecond response, zero cloud latency, lower bandwidth costs.`,
+    keywords: ["edge computing benefits", "1000 readings", "rms vibration", "peak vibration", "fft spectrum"],
+    shortResponse: `**Edge Computing on IoT Gateway:**\nA vibration sensor generates 1000 readings/sec. Instead of streaming raw data, the gateway computes **RMS vibration, Peak vibration, & FFT spectrum** locally.\n\n**Benefits:**\n- ⚡ Lower cellular bandwidth\n- 🚀 Sub-millisecond instant response\n- 💰 Lower cloud storage costs`,
   },
 
-  // 7. Cloud Computing (PDF 1 - Page 3)
+  // 7. Local AI Processing / Edge AI (Page 4)
   {
-    keywords: ["cloud computing", "centralized cloud", "cloud platform", "bhopal pune chennai"],
-    shortResponse: `**Cloud Computing** aggregates factory telemetry centrally so management can monitor multi-site operations from anywhere.\n\n**Example:** View Factory A (Bhopal), Factory B (Pune), and Factory C (Chennai) simultaneously on one central dashboard.`,
+    keywords: ["local ai processing", "edge ai bearing", "bearing fault likely"],
+    shortResponse: `**Local AI Processing (Edge AI):**\nWhen a motor vibration pattern indicates bearing failure, the gateway instantly detects *"Bearing fault likely"* locally and sends an alert without waiting for cloud analysis.`,
   },
 
-  // 8. Artificial Intelligence & Machine Learning Applications (PDF 1 - Page 3)
+  // 8. Local Data Storage & Store-and-Forward (Page 4)
   {
-    keywords: ["ai applications", "ml applications", "ai in industry", "anomaly detection"],
-    shortResponse: `**AI & ML Applications in Industry 4.0:**\n- 🔧 **Predictive Maintenance**: Predict machine failures before breakdown\n- 🎯 **Quality Prediction**: Detect defects at assembly line speed\n- 📈 **Anomaly Detection**: Identify abnormal vibration & thermal drift\n- ⚙️ **Production Optimization**: Eliminate bottlenecks\n- 💡 **Energy Optimization**: Prevent utility waste\n- 📊 **Demand Forecasting**: Optimize inventory`,
+    keywords: ["local data storage", "store and forward", "internet fails", "prevent data loss"],
+    shortResponse: `**Local Data Storage & Store-and-Forward:**\nIf internet connectivity fails, the gateway stores sensor data in local eMMC/SSD storage (32GB). When connectivity returns, data automatically syncs to the cloud, preventing data loss.`,
   },
 
-  // 9. Digital Twin (PDF 1 - Page 3 & 4)
+  // 9. Local Alert Generation (Page 4 & 5)
   {
-    keywords: ["digital twin", "virtual representation", "virtual replica", "what is digital twin"],
-    shortResponse: `A **Digital Twin** is a live virtual 3D/software representation of a physical machine, production line, or factory.\n\n**Key Displays:**\n- Current operating condition & live state\n- Historical performance logs\n- Predicted failure scenarios & Remaining Useful Life (RUL)\n- Energy consumption & production output`,
+    keywords: ["alert generation", "buzzer sms whatsapp", "80°c", "instant alert"],
+    shortResponse: `**Local Alert Generation:**\nIf temperature exceeds 80°C, the gateway instantly:\n- 🔊 Activates local Buzzer\n- 📱 Sends SMS notification\n- 💬 Sends WhatsApp alert\nwithout waiting for a cloud server response!`,
   },
 
-  // 10. Robotics & Automation (PDF 1 - Page 4)
+  // 10. Gateway Device Management (Page 5)
   {
-    keywords: ["robotics", "cobots", "agv", "amr", "industrial robots", "automation"],
-    shortResponse: `**Robotics & Automation Integration:**\nIndustry 4.0 connects software with:\n- 🤖 **Industrial Robots**: Heavy welding & assembly\n- 🤝 **Cobots**: Collaborative human-robot assembly\n- 🚚 **AGVs & AMRs**: Automated Guided & Autonomous Mobile Transport\n- 📷 **Automated Inspection Systems**: Computer vision sorting`,
+    keywords: ["gateway device management", "manage sensors", "smart meters"],
+    shortResponse: `**Gateway Device Management:**\nManages connected Sensors, Controllers, Cameras, and Smart Meters.\n\n**Capabilities:** Remote firmware updates, configuration parameter changes, and self-diagnostics.`,
   },
 
-  // 11. Machine-to-Machine (M2M) Communication (PDF 1 - Page 4)
+  // 11. Hardware Components of an IoT Gateway (Page 5 & 6)
   {
-    keywords: ["m2m", "machine to machine", "machine-to-machine"],
-    shortResponse: `**Machine-to-Machine (M2M) Communication**:\nMachines communicate directly with each other without human intervention:\n\n\`CNC Machine → Production Controller → Robot → Vision Inspection System → Packaging Machine\``,
+    keywords: ["hardware components", "gateway hardware specs", "gateway processor", "raspberry pi cm4", "esp32", "stm32", "nxp i.mx", "intel atom", "nvidia jetson"],
+    shortResponse: `**IoT Gateway Hardware Specs:**\n- **Processors**: Raspberry Pi CM4, ESP32, STM32, NXP i.MX8, Intel Atom, NVIDIA Jetson\n- **Communication**: Ethernet, Wi-Fi, LoRa, ZigBee, Bluetooth, 4G LTE, 5G\n- **Interfaces**: RS232, RS485, CAN Bus, Modbus, USB, GPIO\n- **Storage**: 32GB eMMC, SSD, SD Card (Stores local DB, logs & AI models)`,
   },
 
-  // 12. Predictive Maintenance (PDF 1 - Page 4 & 5)
+  // 12. Example Prudent Edge Gateway (Page 6 & 7)
   {
-    keywords: ["predictive maintenance", "traditional vs industry 4.0", "bearing failure", "prevent failure"],
-    shortResponse: `**Predictive Maintenance Comparison:**\n- ❌ **Traditional**: Machine Fails $\\rightarrow$ Production Stops $\\rightarrow$ Maintenance Repairs (High Downtime)\n- ✅ **Industry 4.0**: Sensor detects abnormal vibration $\\rightarrow$ Edge AI predicts bearing failure $\\rightarrow$ Maintenance scheduled $\\rightarrow$ Failure avoided!`,
+    keywords: ["prudent edge gateway", "gateway features", "32gb local storage", "solar compatible"],
+    shortResponse: `**Prudent Edge Gateway Specs:**\n- **Interfaces**: RS485, Modbus RTU, CAN Bus, Analog/Digital Inputs\n- **Connectivity**: LoRa, Wi-Fi, 4G/5G, Ethernet\n- **Processing**: Edge AI, Local FFT analytics, Event detection\n- **Storage**: 32GB local eMMC/SSD\n- **Power**: Solar compatible with battery backup`,
   },
 
-  // 13. Real-Time Machine Monitoring (PDF 1 - Page 5)
+  // 13. Bridge Monitoring System Example (Page 7)
   {
-    keywords: ["real-time machine monitoring", "machine monitoring", "parameters", "idle time", "cycle time"],
-    shortResponse: `**Real-Time Machine Monitoring** provides live visibility into:\n- Machine Status (ON/OFF/IDLE)\n- Production Quantity & Cycle Time\n- Machine Downtime & Idle Reasons\n- Motor Temperature, Vibration & Current Draw`,
+    keywords: ["bridge monitoring system", "bridge sensors", "flood risk estimation", "tilt sensor"],
+    shortResponse: `**Bridge Monitoring System Architecture:**\n- **Sensors**: Water level, Vibration, Wind speed, Tilt sensors\n- **Gateway**: Collects data every minute; executes threshold checks, trend analysis & flood risk estimation\n- **Cloud Dashboard**: Displays bridge structural health, water level trends, flood alerts & historical reports.`,
   },
 
-  // 14. Overall Equipment Effectiveness (OEE) (PDF 1 - Page 5)
+  // 14. Machine Health Monitoring Gateway Example (Page 7 & 8)
   {
-    keywords: ["oee", "overall equipment effectiveness", "formula", "calculate oee"],
-    shortResponse: `**Overall Equipment Effectiveness (OEE)**:\n\n**OEE = Availability × Performance × Quality**\n\n- ⏱️ **Availability**: Run Time / Planned Time\n- ⚡ **Performance**: Actual Speed / Target Speed\n- ✅ **Quality**: Good Parts / Total Parts Produced`,
+    keywords: ["machine health monitoring gateway", "motor sensors", "health score", "remaining life estimate"],
+    shortResponse: `**Machine Health Monitoring System:**\n- **Sensors**: IMU vibration, Temperature, Current CT coils\n- **Gateway Calculation**: Calculates FFT spectrum, Health score & Bearing fault indicators\n- **Dashboard Output**: Displays Machine condition, Remaining Useful Life (RUL) estimate & Maintenance recommendations.`,
   },
 
-  // 15. Energy Management (PDF 1 - Page 5 & 6)
+  // 15. Universal Industrial IoT Gateway Applications (Page 8)
   {
-    keywords: ["energy management", "utilities", "electricity gas steam", "compressed air"],
-    shortResponse: `**Energy Management & Analytics**:\nMonitors Electricity, Gas, Steam, Compressed Air, Water, and Fuel.\n\n**Key Insights:**\n- Identifies which machine consumes excessive power\n- Pinpoints peak demand consumption hours\n- Detects compressed air & water leaks`,
+    keywords: ["universal gateway applications", "gateway applications", "7 applications"],
+    shortResponse: `**Universal Industrial IoT Gateway Applications:**\n1. Machine Health Monitoring\n2. Railway Monitoring\n3. Smart Bridges\n4. Water Infrastructure\n5. Weather Stations\n6. Solar Plant Monitoring\n7. Asset Tracking`,
   },
 
-  // 16. Quality Control & Vision Inspection (PDF 1 - Page 6)
+  // 16. What is OTA (Over-The-Air) Firmware Update? (Page 8 & 9)
   {
-    keywords: ["quality control", "quality inspection", "computer vision", "defect detection", "surface defects"],
-    shortResponse: `**AI Quality Control & Vision Inspection**:\nAI and line cameras detect:\n- Surface defects & scratches\n- Dimensional errors\n- Missing components\n- Incorrect assembly\n- Colour variations & packaging flaws`,
+    keywords: ["what is ota", "ota firmware update", "why ota important", "500 railway units"],
+    shortResponse: `**OTA (Over-The-Air) Firmware Update** allows remote software updates on deployed IoT devices, gateways, and sensors without site visits.\n\n**Why Important:** Updating 500 Railway Units, 200 Bridge Systems, 1000 Machine Health Devices & 300 Water Stations manually is expensive. With OTA: Upload once $\\rightarrow$ Select targets $\\rightarrow$ Devices auto install!`,
   },
 
-  // 17. Production Optimization (PDF 1 - Page 6)
+  // 17. Basic OTA Architecture (Page 9 & 18)
   {
-    keywords: ["production optimization", "bottlenecks", "slow machines", "changeover time"],
-    shortResponse: `**Production Optimization** identifies shop floor inefficiency:\n- Line Bottlenecks & Slow Machines\n- Excessive Mold/Tool Changeover Time\n- Idle Machine Duration & Production Losses`,
+    keywords: ["basic ota architecture", "ota flow diagram"],
+    shortResponse: `**Overall OTA Architecture:**\n\`Firmware Dev Team → OTA Server → Cloud Platform → MQTT/HTTPS Server → IoT Gateway → Sensor Devices\``,
   },
 
-  // 18. Remote Monitoring & Alerts (PDF 1 - Page 6 & 7)
+  // 18. 8-Step Basic OTA Execution Process (Page 11 - 13)
   {
-    keywords: ["remote monitoring", "alerts", "mobile alerts", "compressor 3"],
-    shortResponse: `**Remote Monitoring & Automated Alerts**:\nManagers monitor plant floor operations from phone or laptop (\`Machine → DAQ → Internet → Cloud → Mobile Dashboard\`).\n\n**Automated Alerts**: High Temp, Excessive Vibration, Overload, Power Failure, Machine Stoppage (e.g. *"Compressor #3: Abnormal vibration detected"*).`,
+    keywords: ["ota 8 steps", "basic ota process", "step 1 firmware development"],
+    shortResponse: `**Basic OTA Update Process:**\n1. **Dev**: Build Firmware v1.1\n2. **Upload**: Push \`Firmware_v1.1.bin\` to AWS S3/Azure Blob\n3. **Check**: Device queries for updates\n4. **Reply**: Server confirms update available\n5. **Download**: Device downloads via 4G/Wi-Fi\n6. **Verify**: Check file size, SHA256 checksum & signature\n7. **Install**: Write to Flash & Reboot\n8. **Confirm**: Send "Version 1.1 Installed" to Cloud`,
   },
 
-  // 19. Small Factory / MSME Retrofit (PDF 1 - Page 7 & 8)
+  // 19. OTA Example Scenarios (Railway & Bridge) (Page 13)
   {
-    keywords: ["retrofit", "msme", "small factory", "cnc", "2-10 lakh", "investment"],
-    shortResponse: `**MSME Industry 4.0 Retrofit**:\nSmall factories don't need ₹1–5 Crore replacements. With **₹2–10 Lakh**, 10 CNC machines install: \`Sensors + DAQ + Edge Gateway + Cloud Dashboard\` to monitor utilization, output, power, downtime, and vibration without replacing legacy equipment.`,
+    keywords: ["wheel flat defects", "flood prediction algorithm", "ota example"],
+    shortResponse: `**Prudent OTA Real Scenarios:**\n- **Railway Vibration**: Installed units receive Firmware v2.0 OTA to detect *wheel flat defects* automatically.\n- **Bridge Monitoring**: Pushes new *flood prediction AI algorithms* to all deployed units over-the-air without site visits.`,
   },
 
-  // 20. Large Factory & Enterprise Integration (PDF 1 - Page 7 & 8)
+  // 20. Full Firmware Update vs Delta OTA Update (Page 13 & 14)
   {
-    keywords: ["large factory", "enterprise", "scada", "mes", "erp", "plc"],
-    shortResponse: `**Large Factory Architecture:**\n\`Thousands of Sensors → Hundreds of DAQ/Edge Nodes → Industrial Network → SCADA/MES → Cloud Data Lake → AI → ERP\`\n\nIntegrates with PLCs, SCADA, MES, ERP, Quality & Maintenance Systems for connected Smart Factories.`,
+    keywords: ["full firmware update", "delta ota update", "50 mb vs 2 mb", "diff update"],
+    shortResponse: `**Full OTA vs Delta OTA Update:**\n- 📦 **Full OTA**: Replaces entire 50 MB firmware image. Simple, but heavy data usage.\n- ⚡ **Delta OTA**: Downloads only changed code diff (**2 MB instead of 50 MB**). Ideal for remote cellular/4G sites (saves 95% bandwidth!).`,
   },
 
-  // 21. IoT Gateway Definition & Flow (PDF 2 - Page 1)
+  // 21. Safe OTA Using Dual Firmware (A/B Partitioning) (Page 14 & 15)
   {
-    keywords: ["iot gateway", "gateway bridge", "what is iot gateway", "gateway flow"],
-    shortResponse: `An **IoT Gateway** is a hardware & software device that acts as a bridge between field sensors and the cloud platform.\n\n**Flow:**\n\`Sensors & Machines → IoT Gateway → Cloud Dashboard / Mobile App\``,
+    keywords: ["a/b partition method", "dual firmware", "partition a partition b", "bricked"],
+    shortResponse: `**Safe A/B Partition OTA Method:**\nMemory contains **Partition A (Active)** & **Partition B (Inactive)**.\n\nNew firmware v1.1 installs into Partition B. System reboots into B. If boot succeeds, system switches to B. If update fails, it **automatically reverts to Partition A**, preventing devices from becoming unusable ("bricked").`,
   },
 
-  // 22. Protocol Conversion (PDF 2 - Page 1 & 3)
+  // 22. OTA Security Features (Page 15, 25 & 26)
   {
-    keywords: ["protocol conversion", "modbus", "rs485", "can bus", "mqtt", "https", "websockets", "zigbee"],
-    shortResponse: `**Gateway Protocol Conversion**:\nConverts industrial field protocols (Modbus RTU, RS485, CAN Bus, ZigBee, LoRa) into internet-compatible cloud protocols (MQTT, HTTPS, TCP/IP, WebSockets).`,
+    keywords: ["ota security features", "secure boot", "digital signature verification", "rsa-2048", "ecc", "https tls", "mqtts", "device authentication"],
+    shortResponse: `**OTA Security Architecture:**\n- 🛡️ **Secure Boot**: Only trusted firmware runs\n- ✍️ **Digital Signature**: Signed by Prudent Systems (RSA-2048 or ECC)\n- 🔒 **Encrypted Transfer**: HTTPS TLS or MQTTS\n- 🔑 **Device Authentication**: Unique SSL Certificate per device prevents unauthorized malicious updates`,
   },
 
-  // 23. Functions of IoT Gateway (PDF 2 - Page 3 & 4)
+  // 23. OTA Dashboard Features & Example Table (Page 15 & 16)
   {
-    keywords: ["gateway functions", "edge ai processing", "local storage", "store and forward", "alert generation"],
-    shortResponse: `**7 Major Functions of IoT Gateway:**\n1. Data Collection (IMU, Temp, GPS, PLCs)\n2. Protocol Conversion (Modbus $\\rightarrow$ MQTT)\n3. Edge Computing (FFT, RMS vibration)\n4. Local AI Processing (Edge AI bearing alerts)\n5. Local Data Storage (Store-and-forward during outage)\n6. Alert Generation (Buzzer, SMS, WhatsApp)\n7. Device Management (Firmware updates, diagnostics)`,
+    keywords: ["ota dashboard features", "device inventory", "mhm-001 bhopal", "mhm-002 indore", "mhm-003 nagpur"],
+    shortResponse: `**OTA Dashboard Features:**\n- **Device Inventory**: Device ID, Location, Firmware Version\n- **Update Control**: Select devices, regions, or customer sites\n- **Status Monitoring**: e.g., \`MHM-001 Bhopal (Update Available)\`, \`MHM-002 Indore (Downloading)\`, \`MHM-003 Nagpur (Updated)\``,
   },
 
-  // 24. Gateway Hardware Components & Specs (PDF 2 - Page 5 & 6)
+  // 24. OTA in AI Machine Health Monitoring (Page 16)
   {
-    keywords: ["raspberry pi cm4", "nxp", "jetson", "stm32", "esp32", "gateway specs", "hardware components"],
-    shortResponse: `**IoT Gateway Hardware Specifications:**\n- **Processors**: Raspberry Pi CM4, NXP i.MX8, NVIDIA Jetson, STM32, ESP32\n- **Communication**: Ethernet, Wi-Fi, LoRa, 4G LTE, 5G, ZigBee\n- **Interfaces**: RS232, RS485, CAN Bus, Modbus, USB, GPIO\n- **Storage**: 32GB eMMC / SSD / SD Card\n- **Power**: Solar compatible with battery backup`,
+    keywords: ["ota in ai machine health", "gear wear", "motor imbalance", "smarter over time"],
+    shortResponse: `**AI Machine Health OTA Upgrades:**\nTo detect new faults (bearing defects, gear wear, motor imbalance), you don't replace hardware! You push updated **AI models, analytics algorithms & dashboard logic** OTA. Installed hardware becomes smarter over time!`,
   },
 
-  // 25. Bridge Monitoring System (PDF 2 - Page 7)
+  // 25. Recommended OTA Hardware Requirements (Page 18 - 20)
   {
-    keywords: ["bridge monitoring", "bridge health", "water level sensor", "flood risk"],
-    shortResponse: `**Bridge Monitoring System**:\n- **Sensors**: Water level, Vibration, Wind, Tilt sensors\n- **Gateway**: Samples data every minute, checks thresholds, analyzes trends & estimates flood risk\n- **Dashboard**: Displays live bridge structural health, water level trends & flood alerts`,
+    keywords: ["sensor node hardware", "esp32 16 mb flash", "bootloader", "ram buffer"],
+    shortResponse: `**OTA Sensor Node Hardware Requirements:**\n- **Controllers**: ESP32, STM32, Nordic nRF52, RP2040, NXP\n- **Flash Memory**: **ESP32 16 MB Flash** recommended (4 MB is too limited)\n- **Partitioning**: Bootloader, Firmware A, Firmware B, Settings, Logs\n- **Gateway**: RPi CM4 / NXP i.MX8 / Jetson Nano, 4GB RAM, 32GB eMMC/SSD`,
   },
 
-  // 26. Machine Health Monitoring Gateway (PDF 2 - Page 7 & 8)
+  // 26. Communication Channels for OTA (WiFi, 4G/5G, LoRa) (Page 20 - 22)
   {
-    keywords: ["machine health gateway", "fft spectrum", "bearing fault", "health score"],
-    shortResponse: `**Machine Health Monitoring Gateway**:\n- **Motor Sensors**: IMU, Temperature, Current\n- **Gateway Computation**: Calculates FFT vibration spectrum, health score & bearing fault indicators\n- **Dashboard**: Shows machine condition, Remaining Useful Life (RUL) & maintenance recommendations`,
+    keywords: ["wifi ota", "4g 5g ota", "lora ota", "communication channels for ota"],
+    shortResponse: `**OTA Communication Channels:**\n- 📶 **WiFi OTA**: Fast & cheap (Factories & indoor sites)\n- 📡 **4G/5G OTA**: Most practical (Railway sites, bridges, water stations)\n- 📻 **LoRa OTA**: Limited bandwidth (2 MB takes hours). Use LoRa for **OTA Notifications ONLY**; actual download occurs over 4G/Wi-Fi!`,
   },
 
-  // 27. What is OTA (Over-The-Air) Firmware Update? (PDF 2 - Page 8 & 9)
+  // 27. OTA Server & Metadata Database (Page 22 & 23)
   {
-    keywords: ["what is ota", "ota firmware update", "over the air", "remote update"],
-    shortResponse: `**OTA (Over-The-Air) Firmware Update** allows remote updating of software/firmware on IoT devices, gateways, and sensors without physically visiting installation sites.\n\n**Value**: Upload firmware once $\\rightarrow$ Select target units $\\rightarrow$ Auto-install over cellular/Wi-Fi $\\rightarrow$ Eliminates travel expenses.`,
+    keywords: ["ota server design", "aws s3", "azure blob", "metadata database", "rw001 1.0"],
+    shortResponse: `**OTA Server & Metadata DB:**\n- **Storage**: AWS S3, Azure Blob, or Private Linux Server stores \`Firmware_v2.0.bin\`\n- **Metadata DB**: Stores Device ID (\`RW001\`), Firmware Version (\`v1.0\`), Location, Customer, & Update Status`,
   },
 
-  // 28. OTA Architecture & Requirements (PDF 2 - Page 18 - 20)
+  // 28. Complete 12-Step OTA Workflow with MQTT Payload (Page 23 - 25)
   {
-    keywords: ["ota architecture", "ota requirements", "ota bootloader", "flash memory"],
-    shortResponse: `**OTA Hardware Requirements:**\n- **Controller**: ESP32 (16MB Flash), STM32, Nordic nRF52, RP2040\n- **Memory**: Extra Flash for dual partitions, RAM buffer\n- **Bootloader**: Verifies Checksum, CRC & Digital Signature before launching application`,
+    keywords: ["12-step ota workflow", "mqtt payload", "firmware.bin", "sha256 signature"],
+    shortResponse: `**Complete 12-Step OTA Workflow:**\n1. Build Firmware v2.0\n2. Generate SHA256 Checksum\n3. Sign with Private Key\n4. Upload to OTA Server\n5. Cloud sends MQTT: \`{"version":"2.0","url":"firmware.bin"}\`\n6. Device receives notify\n7. Download via HTTPS\n8. Verify SHA256 & Signature\n9. Write to Partition B\n10. Reboot into Bootloader B\n11. Application self-test (Sensors, Comm, Memory)\n12. Send "Update Successful" to Cloud!`,
   },
 
-  // 29. Dual-Partition A/B Failsafe OTA (PDF 2 - Page 14 & 15)
+  // 29. AI Model OTA Update Details (Page 26 & 27)
   {
-    keywords: ["a/b partition", "dual partition", "failsafe", "rollback", "bricked"],
-    shortResponse: `**Safe Dual-Partition A/B OTA Method**:\n- **Memory**: Partition A (Active) & Partition B (Inactive)\n- **Safe Write**: New firmware downloads into Partition B\n- **Verification**: Verifies hash & signature\n- **Failsafe Rollback**: If boot fails, system automatically reverts to Partition A so devices never get "bricked".`,
+    keywords: ["ai model ota update", "bearing_model_v3.tflite", "85% to 95%"],
+    shortResponse: `**AI Model OTA Update:**\nInstead of reflashing base firmware, upload updated neural model \`bearing_model_v3.tflite\`. Bearing fault detection accuracy jumps from **85% to 95%** across all gateways instantly without firmware changes!`,
   },
 
-  // 30. OTA Security Features (PDF 2 - Page 15 & 25)
+  // 30. Suggested OTA Tech Stack (Page 27)
   {
-    keywords: ["ota security", "secure boot", "digital signature", "rsa-2048", "ecc", "encryption"],
-    shortResponse: `**OTA Security Architecture:**\n- 🔒 **Secure Boot**: Only trusted firmware runs\n- ✍️ **Digital Signature**: Signed via RSA-2048 / ECC\n- 🛡️ **Encryption**: HTTPS TLS or MQTTS encrypted transfer\n- 🔑 **Device Authentication**: Unique device certificates prevent malicious updates`,
+    keywords: ["suggested ota tech stack", "freertos", "docker containers", "ubuntu linux", "mosquitto", "postgresql", "minio", "react", "flutter"],
+    shortResponse: `**Complete OTA Tech Stack:**\n- **Device Layer**: ESP32, STM32, FreeRTOS\n- **Communication**: MQTT, HTTPS, TLS Encryption\n- **Gateway**: Raspberry Pi CM4, Docker Containers\n- **Cloud**: Ubuntu Linux, Mosquitto MQTT Broker, Node.js/Python, PostgreSQL\n- **Storage**: AWS S3 Compatible / MinIO\n- **Dashboard**: React, Flutter Mobile App`,
   },
 
-  // 31. AI Model OTA Update (PDF 2 - Page 26 & 27)
+  // 31. Business Value & Commercial Advantage (Page 17 & 28)
   {
-    keywords: ["ai model ota", "bearing_model_v3.tflite", "model ota", "update ai"],
-    shortResponse: `**AI Model OTA Update**:\nInstead of updating entire firmware, remotely push updated neural network models (\`bearing_model_v3.tflite\`) to boost bearing detection accuracy (e.g. from 85% to 95%) without touching base firmware.`,
+    keywords: ["business value of ota", "without ota vs with ota", "commercial advantage", "single scalable platform"],
+    shortResponse: `**Business Value of OTA:**\n- ❌ **Without OTA**: Expensive site visits, travel costs, slow deployments.\n- ✅ **With OTA**: Instant remote upgrades, instant bug fixes, lower maintenance costs, effortless scaling to thousands of devices.\n\nCreates a **Single Scalable Industry 4.0 Platform** supporting Railways, Machine Health, Bridges, Water, Weather & Asset Tracking!`,
   },
 
-  // 32. Complete 12-Step OTA Workflow (PDF 2 - Page 23 - 25)
+  // ==========================================
+  // GENERAL DOMAIN KNOWLEDGE (Industry 4.0, Web Dev, Company)
+  // ==========================================
+
+  // 32. Industry 4.0 Definition & Equation (PDF 1)
   {
-    keywords: ["ota workflow", "12 steps", "ota steps", "how ota works step"],
-    shortResponse: `**12-Step OTA Workflow:**\n1. Build firmware (v2.0)\n2. Generate SHA256 checksum\n3. Digitally sign with Private Key\n4. Upload to OTA Server (AWS S3 / Blob)\n5. Send MQTT notify packet\n6. Device receives notification\n7. Download via HTTPS\n8. Verify SHA256 & Signature\n9. Write to Partition B\n10. Reboot into Bootloader B\n11. Self-test health\n12. Report success to dashboard!`,
+    keywords: ["industry 4.0 equation", "smart manufacturing equation"],
+    shortResponse: `**Industry 4.0 Equation:**\n\`Machines + Sensors + Connectivity + Data + AI = Smart Manufacturing\``,
   },
 
-  // 33. Full OTA vs Delta OTA Update (PDF 2 - Page 13 & 14)
+  // 33. OEE Calculation (PDF 1)
   {
-    keywords: ["full ota", "delta ota", "diff update"],
-    shortResponse: `**Full OTA vs Delta OTA**:\n- **Full OTA**: Replaces entire 50 MB firmware image.\n- **Delta OTA**: Downloads only changed code diff (e.g. 2 MB instead of 50 MB), saving 95% cellular data bandwidth!`,
+    keywords: ["oee calculation", "overall equipment effectiveness"],
+    shortResponse: `**OEE Formula:**\n\n$$\\text{OEE} = \\text{Availability} \\times \\text{Performance} \\times \\text{Quality}$$\n\n- **Availability**: Run Time / Planned Time\n- **Performance**: Actual Speed / Target Speed\n- **Quality**: Good Parts / Total Output`,
   },
 
-  // 34. OTA Tech Stack (PDF 2 - Page 27)
-  {
-    keywords: ["ota tech stack", "freertos", "mosquitto", "postgresql", "minio"],
-    shortResponse: `**OTA Technology Stack:**\n- **Device Layer**: ESP32, STM32, FreeRTOS\n- **Communication**: MQTT, HTTPS, TLS Encryption\n- **Gateway**: Raspberry Pi CM4, Docker Containers\n- **Cloud**: Ubuntu Linux, Mosquitto MQTT Broker, Node.js/Python, PostgreSQL\n- **Storage**: AWS S3 / MinIO\n- **Dashboard**: React, Flutter Mobile App`,
-  },
-
-  // 35. Web Development & Cloud Engine
+  // 34. Web Development & Cloud Engine
   {
     keywords: ["web", "web development", "website", "react", "frontend", "backend", "dashboard", "html", "css", "javascript", "typescript", "api", "web app"],
     shortResponse: `**Web Development & Cloud Dashboards**:\nWe build fast, responsive web applications, real-time telemetry dashboards, REST APIs, and monitoring UI using **React, TypeScript, Tailwind CSS, and Cloud Platforms** to visualize live IoT machine data and control hardware remotely.\n\nExplore our [Solutions Catalog](/solutions).`,
   },
 
-  // 36. Company & Overview
+  // 35. Company & Overview
   {
     keywords: ["prudent", "company", "about", "who are you", "prusys", "bhopal", "kya hai", "kon hai", "kaha hai"],
     shortResponse: `**Prudent Systems Pvt. Ltd.** is an ISO-certified technology company based in **Bhopal, MP, India**.\n\nWe build **Industry 4.0 Systems, Universal IoT Gateways, Modular DAQ, Edge AI, Web Dashboards, and Railway Electronics** (GPS OMS & Digital Speedometers).\n\n📍 Bhopal, MP | 📞 ${CONTACT.phone} | 📧 ${CONTACT.email}\nLearn more on our [About Page](/about).`,
   },
 
-  // 37. Contact Info
+  // 36. Contact Info
   {
     keywords: ["contact", "email", "phone", "address", "location", "office", "call", "reach", "baat", "number"],
     shortResponse: `📍 **Office**: ${CONTACT.addressLine}\n📞 **Mobile**: ${CONTACT.phone}\n☎️ **Landline**: ${CONTACT.landline}\n📧 **Email**: ${CONTACT.email}\n🗺️ **Location**: [Open in Google Maps](${CONTACT.mapsUrl})\n\nFill out our enquiry form on the [Contact Page](/contact).`,
   },
 
-  // 38. Railway Systems Portfolio
+  // 37. Railway Systems Portfolio
   {
     keywords: ["railway", "railways", "locomotive", "track", "speedometer", "oliver", "oms"],
     shortResponse: `**Prudent Systems Railway Portfolio**:\n- 🚆 **GPS OMS**: Track oscillation & location tracking.\n- 📟 **Digital Speedometer**: Cab display & driver memory log.\n- 📊 **OLIVER G & GHX**: Track geometry & multi-axis acceleration recording.\n\nSee full specs on our [Solutions Page](/solutions).`,
@@ -261,38 +263,32 @@ export const ALLOWED_DOMAIN_KEYWORDS = [
   "modbus", "can bus", "rs485", "mqtt", "oee", "retrofit", "msme", "cnc", "a/b partition",
   "rollback", "secure boot", "digital signature", "m2m", "vision", "fft", "rms", "kurtosis",
   "evolution", "1.0", "2.0", "3.0", "4.0", "delta ota", "full ota", "tflite", "cm4", "jetson",
-  "nxp", "agv", "amr", "cobot", "scada", "mes", "erp", "bridge", "anemometer", "greetings",
+  "nxp", "agv", "amr", "cobot", "scada", "mes", "erp", "bridge", "anemometer", "7 functions",
+  "store and forward", "mhm-001", "rw001", "bearing_model_v3", "85%", "95%", "greetings",
   "hi", "hello", "hey", "hlo", "namaste", "good morning", "good afternoon", "good evening", "good night"
 ];
 
 export const SYSTEM_INSTRUCTION = `You are the AI Assistant for Prudent Systems Pvt. Ltd. (Bhopal, MP, India).
-You have COMPLETE A-to-Z knowledge from both official company documentation PDFs:
+You have COMPLETE A-to-Z 28-Page Knowledge from the official IoT Gateway & OTA Firmware Update Architecture specification:
 
-1. Industry 4.0 & Manufacturing (PDF 1):
-   - Equation: Machines + Sensors + Connectivity + Data + AI = Smart Manufacturing
-   - Evolution: 1.0 Steam/Mechanization, 2.0 Electricity/Mass Production, 3.0 Electronics/Automation, 4.0 IoT/AI/Cloud/Robotics
-   - System Flow: Machines -> Sensors -> DAQ -> Edge Controller -> Local/Cloud Platform -> AI/ML -> Decision -> Action
-   - Technologies: IIoT, DAQ, Edge Computing (FFT/RMS), Cloud Computing (Bhopal, Pune, Chennai), AI/ML, Digital Twin, Robotics (Cobots, AGVs, AMRs), M2M
-   - Uses: Predictive Maintenance, Real-time Machine Monitoring, OEE (Availability x Performance x Quality), Energy Management (kWh, Gas, Steam, Air, Water), Quality Control (Vision defects), Production Optimization, Remote Monitoring, Automated Alerts
-   - MSME Retrofit: ₹2-10 Lakh for 10 CNC machines without replacing legacy machinery
-   - Large Factory: Sensors -> DAQ/Edge -> Network -> SCADA/MES -> Cloud -> AI -> ERP
+1. IoT Gateway Architecture & Specs (Pages 1 - 8):
+   - Definition: Bridge between field sensors and cloud (Sensors & Machines -> IoT Gateway -> Cloud Dashboard / Mobile App).
+   - Protocol Conversion: Converts Modbus RTU, RS485, CAN Bus, ZigBee, LoRa, Bluetooth to MQTT, HTTPS, TCP/IP, WebSockets.
+   - 7 Functions: Data collection, Protocol conversion, Edge computing (FFT/RMS), Local AI (.tflite), Store-and-forward local storage (32GB eMMC/SSD), Local alert generation (Buzzer, SMS, WhatsApp), Device management.
+   - Hardware: RPi CM4, NXP i.MX8, Intel Atom, NVIDIA Jetson, ESP32, STM32, Ethernet, Wi-Fi, LoRa, 4G/5G, RS232/485, CAN Bus, Solar compatible.
+   - Applications: Machine Health Monitoring, Railway Monitoring, Smart Bridges, Water Infrastructure, Weather Stations, Solar Plant Monitoring, Asset Tracking.
 
-2. IoT Gateway & OTA Architecture (PDF 2):
-   - IoT Gateway: Bridge between field sensors and cloud (Sensors -> Gateway -> Cloud). Converts RS485/Modbus/CAN to MQTT/HTTPS/WebSockets.
-   - Hardware: RPi CM4, NXP i.MX8, STM32, ESP32, NVIDIA Jetson, 4G LTE, 5G, LoRaWAN, 32GB eMMC/SSD.
-   - Gateway Functions: Data collection, protocol conversion, edge computing (FFT), edge AI (.tflite), store-and-forward local storage, alert generation, device management.
-   - Applications: Bridge Monitoring System, Machine Health Monitoring, Railway Monitoring, Weather Stations, Water Infrastructure.
-   - OTA Firmware Update: Remote updates without site visits.
-   - Safe OTA Dual Partition A/B: Active A, Inactive B. Flash B, verify SHA256 & RSA-2048/ECC signature. Automatic rollback to A if boot fails.
-   - Delta OTA vs Full OTA: Delta downloads only changed diff (2MB vs 50MB).
-   - AI Model OTA: Update only .tflite neural networks remotely over-the-air.
-   - 12-Step OTA Workflow: Build -> Checksum -> Sign -> Upload -> MQTT notify -> Receive -> Download -> Verify -> Write B -> Reboot B -> Health test -> Report success.
+2. OTA Firmware Update Architecture (Pages 8 - 28):
+   - What is OTA: Remote software/firmware update on deployed devices without site visits.
+   - Flow: Dev Team -> OTA Server -> Cloud Platform -> MQTT/HTTPS Server -> IoT Gateway -> Sensor Devices.
+   - Types: Full Firmware Update (entire 50MB image) vs Delta OTA Update (2MB diff code only, saves 95% bandwidth).
+   - Safe A/B Partition Method: Partition A (Active) & Partition B (Inactive). Flash B, verify SHA256 & RSA-2048/ECC signature. Boot B. Automatic rollback to A if boot fails (Zero bricked devices).
+   - Security: Secure Boot, Signed Firmware (RSA-2048/ECC), Encrypted Communication (HTTPS TLS / MQTTS), Device Authentication (Unique SSL Certificates).
+   - AI Model OTA: Remote push of bearing_model_v3.tflite models to boost fault detection accuracy from 85% to 95% without firmware changes.
+   - 12-Step OTA Workflow: Build v2.0 -> SHA256 checksum -> Private key signature -> Upload -> MQTT notify {"version":"2.0","url":"firmware.bin"} -> Device receives -> HTTPS download -> Verify -> Write Partition B -> Reboot B -> Health test -> Report success.
    - Tech Stack: ESP32/STM32/FreeRTOS -> MQTT/HTTPS/TLS -> RPi CM4/Docker -> Ubuntu/Mosquitto/Node/PostgreSQL -> AWS S3/MinIO -> React/Flutter.
 
-3. Web Development, IoT & AI/ML Capabilities:
-   - React, TypeScript, Tailwind CSS, REST APIs, Real-time WebSockets dashboards, Edge AI, Python models.
-
-4. Strict Rules:
+3. Rules:
    - Provide SHORT, CRISP, ACCURATE, and POINT-TO-POINT answers (2-4 concise lines/bullets).
    - Include page links [Solutions](/solutions), [About](/about), [Contact](/contact) where appropriate.
    - If question is OUTSIDE IoT, AI/ML, Web Dev, or Prudent Systems, reply with:
