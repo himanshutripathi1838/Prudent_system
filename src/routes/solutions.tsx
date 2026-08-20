@@ -20,6 +20,7 @@ const searchSchema = z.object({
   q: z.string().optional(),
   category: z.string().optional(),
   industry: z.string().optional(),
+  open: z.string().optional(),
 });
 
 export const Route = createFileRoute("/solutions")({
@@ -44,6 +45,17 @@ function SolutionsPage() {
   const [category, setCategory] = useState<string>(search.category ?? "All");
   const [industry, setIndustry] = useState<string>(search.industry ?? "All");
   const [active, setActive] = useState<Solution | null>(null);
+
+  useEffect(() => {
+    if (search.open) {
+      const match = SOLUTIONS.find(
+        (s) => s.slug.toLowerCase() === search.open?.toLowerCase() || s.title.toLowerCase() === search.open?.toLowerCase()
+      );
+      if (match) {
+        setActive(match);
+      }
+    }
+  }, [search.open]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();

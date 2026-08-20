@@ -339,7 +339,7 @@ export function SolutionPortfolio() {
           <Reveal key={s.slug} delay={(i % 3) * 0.05}>
             <Link
               to="/solutions"
-              search={{ q: s.title }}
+              search={{ open: s.slug }}
               onClick={() => scrollToTop()}
               className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-xl"
             >
