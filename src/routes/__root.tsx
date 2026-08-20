@@ -128,6 +128,14 @@ function RootComponent() {
     if (typeof window !== "undefined") {
       window.history.scrollRestoration = "manual";
       scrollToTop();
+
+      // Only redirect to Home on true browser reload (F5 / Ctrl+Shift+R)
+      const navEntries = performance.getEntriesByType?.("navigation") as PerformanceNavigationTiming[];
+      if (navEntries && navEntries.length > 0 && navEntries[0].type === "reload") {
+        if (window.location.pathname !== "/") {
+          window.location.replace("/");
+        }
+      }
     }
   }, []);
 
