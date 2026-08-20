@@ -363,3 +363,19 @@
   }
 }
 
+@keyframes eyes-blink {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 2px rgba(110, 231, 183, 0.4));
+  }
+  50% {
+    transform: scale(1.14);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(110, 231, 183, 0.95));
+  }
+}
+
+.animate-eyes-blink {
+  animation: eyes-blink 2s infinite ease-in-out;
+}

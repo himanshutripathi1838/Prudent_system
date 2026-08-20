@@ -363,9 +363,9 @@ export function SolutionPortfolio() {
                 <p className="relative mt-2 flex-1 text-sm text-muted-foreground">{s.summary}</p>
                 <span className="relative mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:underline">
                   <img
-                    src="/eyes-icon.png"
+                    src="/eyes-icon.gif"
                     alt="Quick View"
-                    className="h-4.5 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                    className="h-5 w-auto object-contain animate-eyes-blink transition-transform duration-300 group-hover:scale-110"
                   />
                   View in Solutions
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
