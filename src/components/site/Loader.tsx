@@ -82,7 +82,7 @@ export function Loader() {
             transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
           />
 
-          <div className="relative h-56 w-56 sm:h-64 sm:w-64">
+          <div className="relative h-64 w-64 md:h-96 md:w-96">
             <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full text-primary" aria-hidden>
               <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
               <motion.g
@@ -121,21 +121,28 @@ export function Loader() {
                 transition={{ duration: DURATION_MS / 1000, ease: "easeInOut" }}
                 transform="rotate(-90 100 100)"
               />
-              <rect x="86" y="86" width="28" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="1.4" />
-              <motion.rect
-                x="93" y="93" width="14" height="14" rx="2" fill="currentColor"
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 1.6, repeat: Infinity }}
-              />
             </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="flex h-20 w-20 items-center justify-center rounded-2xl border border-primary/40 bg-background/90 p-2 shadow-lg backdrop-blur-md md:h-28 md:w-28"
+                animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.85, 1, 0.85] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <img
+                  src="/prudent-logo.png"
+                  alt="Prudent Systems Logo"
+                  className="h-full w-full object-contain filter drop-shadow-[0_0_12px_rgba(var(--primary-rgb),0.5)]"
+                />
+              </motion.div>
+            </div>
           </div>
 
-          <div className="relative mt-8 flex flex-col items-center gap-4">
+          <div className="relative mt-10 flex flex-col items-center gap-4">
             <Logo />
-            <div className="h-px w-56 overflow-hidden bg-border">
+            <div className="h-px w-64 overflow-hidden bg-border md:w-80">
               <motion.div className="h-full bg-primary" style={{ width: `${progress}%` }} />
             </div>
-            <p className="font-mono text-xs tracking-[0.3em] text-primary">
+            <p className="font-mono text-xs tracking-[0.3em] text-primary md:text-sm">
               {String(progress).padStart(3, "0")}%
             </p>
           </div>
