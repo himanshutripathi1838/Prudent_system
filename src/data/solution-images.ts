@@ -14,8 +14,8 @@ export const SOLUTION_IMAGES: Record<string, string> = {
   "electronic-toe-load-measuring-device": "/solutions/toe-load.jpg",
   "route-data-preparation-system": "/solutions/route-data.jpg",
   "potable-train-detection-system": "/solutions/train-detection.jpg",
-  "emergency-light": "/solutions/emergency-light.jpg",
+  "emergency-light": "/solutions/emergency-light.png",
   "rgb-facade-light": "/solutions/rgb-facade.jpg",
-  "solar-hybrid-light": "/solutions/solar-hybrid.png",
+  "solar-hybrid-light": "/solutions/solar-hybrid.jpg",
   "pit-catwalk-light": "/solutions/pit-catwalk.jpg",
 };
