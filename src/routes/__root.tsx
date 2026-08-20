@@ -128,9 +128,6 @@ function RootComponent() {
     if (typeof window !== "undefined") {
       window.history.scrollRestoration = "manual";
       scrollToTop();
-      if (window.location.pathname !== "/") {
-        router.navigate({ to: "/", replace: true });
-      }
     }
   }, []);
 
