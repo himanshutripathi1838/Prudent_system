@@ -10,6 +10,7 @@ import { SOLUTIONS, SOLUTION_CATEGORIES, SOLUTION_INDUSTRIES, type Solution } fr
 import { SOLUTION_IMAGES } from "@/data/solution-images";
 import { ContactCta } from "@/components/home/sections";
 import { OpenableCard } from "@/components/site/DetailModal";
+import { WordsStagger } from "@/components/ui/words-stagger";
 
 const TITLE = "Solutions — Industrial IoT, Machine Health & Smart Manufacturing | Prudent Systems";
 const DESCRIPTION =
@@ -221,7 +222,9 @@ function SolutionModal({ solution, onClose }: { solution: Solution | null; onClo
                   <span className="font-mono text-[10px] uppercase tracking-wider text-primary">{solution.category}</span>
                   <MaturityBadge label={solution.maturity} />
                 </div>
-                <h2 className="mt-2 font-display text-2xl font-semibold">{solution.title}</h2>
+                <WordsStagger key={`title-${solution.slug}`} className="mt-2 font-display text-2xl font-semibold text-foreground">
+                  {solution.title}
+                </WordsStagger>
               </div>
               <button
                 type="button"
@@ -234,21 +237,33 @@ function SolutionModal({ solution, onClose }: { solution: Solution | null; onClo
             </div>
 
             <div className="mt-6 space-y-6 text-sm">
-              <Block title="Problem"><p className="text-muted-foreground">{solution.problem}</p></Block>
-              <Block title="Solution & Approach"><p className="text-muted-foreground">{solution.approach}</p></Block>
+              <Block title="Problem">
+                <WordsStagger key={`prob-${solution.slug}`} className="text-muted-foreground leading-relaxed" stagger={0.04} speed={0.3}>
+                  {solution.problem}
+                </WordsStagger>
+              </Block>
+              <Block title="Solution & Approach">
+                <WordsStagger key={`appr-${solution.slug}`} className="text-muted-foreground leading-relaxed" stagger={0.04} speed={0.3}>
+                  {solution.approach}
+                </WordsStagger>
+              </Block>
 
               {solution.scaleInfo || solution.otaCapability ? (
                 <div className="grid gap-3 rounded-lg border border-primary/20 bg-primary/5 p-4 sm:grid-cols-2">
                   {solution.scaleInfo ? (
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Deployment & Scale</p>
-                      <p className="mt-1 text-xs text-foreground/90">{solution.scaleInfo}</p>
+                      <WordsStagger key={`scale-${solution.slug}`} className="mt-1 text-xs text-foreground/90 leading-relaxed" stagger={0.04} speed={0.3}>
+                        {solution.scaleInfo}
+                      </WordsStagger>
                     </div>
                   ) : null}
                   {solution.otaCapability ? (
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-wider text-primary">OTA & Remote Management</p>
-                      <p className="mt-1 text-xs text-foreground/90">{solution.otaCapability}</p>
+                      <WordsStagger key={`ota-${solution.slug}`} className="mt-1 text-xs text-foreground/90 leading-relaxed" stagger={0.04} speed={0.3}>
+                        {solution.otaCapability}
+                      </WordsStagger>
                     </div>
                   ) : null}
                 </div>
