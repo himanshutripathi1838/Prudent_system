@@ -55,6 +55,16 @@ function SolutionDetailModal({ solution, onClose }: { solution: Solution | null;
     >
       {solution ? (
         <div className="space-y-6 text-sm">
+          {solution.image || SOLUTION_IMAGES[solution.slug] ? (
+            <div className="relative -mx-4 -mt-4 mb-6 flex h-52 w-[calc(100%+2rem)] items-center justify-center overflow-hidden rounded-t-xl border-b border-border/40 bg-surface-2/60 p-3 sm:-mx-6 sm:-mt-6 sm:h-72 sm:w-[calc(100%+3rem)]">
+              <img
+                src={solution.image ?? SOLUTION_IMAGES[solution.slug]}
+                alt={solution.title}
+                loading="lazy"
+                className="h-full max-w-full object-contain"
+              />
+            </div>
+          ) : null}
           <Block title="Problem">
             <WordsStagger key={`h-prob-${solution.slug}`} className="text-muted-foreground leading-relaxed" stagger={0.04} speed={0.3}>
               {solution.problem}
@@ -331,17 +341,14 @@ export function SolutionPortfolio() {
             <OpenableCard onOpen={() => setActive(s)}>
             <GlassCard className="group relative flex h-full flex-col overflow-hidden p-6" interactive>
               <DataFlowBg nodes={s.architecture} seed={i} className="opacity-40" />
-              {SOLUTION_IMAGES[s.slug] ? (
-                <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden">
+              {s.image || SOLUTION_IMAGES[s.slug] ? (
+                <div className="relative -mx-6 -mt-6 mb-4 flex h-48 w-[calc(100%+3rem)] items-center justify-center overflow-hidden border-b border-border/40 bg-surface-2/60 p-3">
                   <img
-                    src={SOLUTION_IMAGES[s.slug]}
+                    src={s.image ?? SOLUTION_IMAGES[s.slug]}
                     alt={s.title}
                     loading="lazy"
-                    width={1024}
-                    height={640}
-                    className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" aria-hidden />
                 </div>
               ) : null}
               <div className="relative flex items-center justify-between gap-3">
