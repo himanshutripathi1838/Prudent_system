@@ -41,9 +41,10 @@ export function Loader() {
     };
     window.addEventListener("trigger-ps-loader", handleTrigger);
 
-    // Initial load & hard refresh animation
+    // Initial load & hard refresh animation (only on true page load)
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduced) {
+    if (!reduced && !(window as any).__ps_loader_executed) {
+      (window as any).__ps_loader_executed = true;
       runLoader(2200);
     }
 
