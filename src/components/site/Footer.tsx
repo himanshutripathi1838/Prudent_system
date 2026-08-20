@@ -5,15 +5,6 @@ import { Logo } from "./Logo";
 import { scrollToTop } from "@/components/site/SmoothScroll";
 
 export function Footer() {
-  const TOP_SOLUTIONS = [
-    { label: "GPS OMS (Onboard Monitor)", to: "/solutions" },
-    { label: "GPS Based OLIVER GHX", to: "/solutions" },
-    { label: "GPS Based Speedometer", to: "/solutions" },
-    { label: "Modular DAQ & IoT Gateway", to: "/solutions" },
-    { label: "Edge AI Predictive System", to: "/solutions" },
-    { label: "Water Level & Weather Station", to: "/solutions" },
-  ];
-
   return (
     <footer className="relative border-t border-border bg-background/80 pt-16 pb-24 backdrop-blur-xl sm:px-8">
       {/* Top Gradient Accent Line */}
@@ -48,7 +39,7 @@ export function Footer() {
         </div>
 
         {/* Footer Main Grid */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.9fr_1fr_1.1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1.2fr]">
           {/* Column 1: Company Branding & Badges */}
           <div className="flex flex-col justify-between">
             <div>
@@ -95,27 +86,6 @@ export function Footer() {
                   >
                     <span className="h-1 w-1 rounded-full bg-primary/40 transition-all group-hover:w-2 group-hover:bg-primary" />
                     {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Featured Solutions */}
-          <div>
-            <h4 className="font-display text-xs font-bold uppercase tracking-wider text-foreground">
-              Solutions Catalog
-            </h4>
-            <ul className="mt-4 space-y-2.5">
-              {TOP_SOLUTIONS.map((sol) => (
-                <li key={sol.label}>
-                  <Link
-                    to={sol.to}
-                    onClick={() => scrollToTop()}
-                    className="group inline-flex items-center gap-2 text-xs text-muted-foreground transition-all hover:text-primary"
-                  >
-                    <span className="h-1 w-1 rounded-full bg-primary/40 transition-all group-hover:w-2 group-hover:bg-primary" />
-                    {sol.label}
                   </Link>
                 </li>
               ))}
