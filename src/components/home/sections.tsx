@@ -327,7 +327,6 @@ export function SolutionPreview() {
 }
 
 export function SolutionPortfolio() {
-  const [active, setActive] = useState<Solution | null>(null);
   return (
     <Section className="bg-surface/30">
       <SectionHeading
@@ -338,35 +337,39 @@ export function SolutionPortfolio() {
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SOLUTIONS.map((s, i) => (
           <Reveal key={s.slug} delay={(i % 3) * 0.05}>
-            <OpenableCard onOpen={() => setActive(s)}>
-            <GlassCard className="group relative flex h-full flex-col overflow-hidden p-6" interactive>
-              <DataFlowBg nodes={s.architecture} seed={i} className="opacity-40" />
-              {s.image || SOLUTION_IMAGES[s.slug] ? (
-                <div className="relative -mx-6 -mt-6 mb-4 flex h-48 w-[calc(100%+3rem)] items-center justify-center overflow-hidden border-b border-border/40 bg-surface-2/60 p-3">
-                  <img
-                    src={s.image ?? SOLUTION_IMAGES[s.slug]}
-                    alt={s.title}
-                    loading="lazy"
-                    className="h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
+            <Link
+              to="/solutions"
+              search={{ q: s.title }}
+              onClick={() => scrollToTop()}
+              className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-xl"
+            >
+              <GlassCard className="group relative flex h-full flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40" interactive>
+                <DataFlowBg nodes={s.architecture} seed={i} className="opacity-40" />
+                {s.image || SOLUTION_IMAGES[s.slug] ? (
+                  <div className="relative -mx-6 -mt-6 mb-4 flex h-48 w-[calc(100%+3rem)] items-center justify-center overflow-hidden border-b border-border/40 bg-surface-2/60 p-3">
+                    <img
+                      src={s.image ?? SOLUTION_IMAGES[s.slug]}
+                      alt={s.title}
+                      loading="lazy"
+                      className="h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ) : null}
+                <div className="relative flex items-center justify-between gap-3">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-primary">{s.category}</span>
+                  <MaturityBadge label={s.maturity} />
                 </div>
-              ) : null}
-              <div className="relative flex items-center justify-between gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-primary">{s.category}</span>
-                <MaturityBadge label={s.maturity} />
-              </div>
-              <h3 className="relative mt-3 font-display text-lg font-semibold">{s.title}</h3>
-              <p className="relative mt-2 flex-1 text-sm text-muted-foreground">{s.summary}</p>
-              <span className="relative mt-5 inline-flex items-center gap-1.5 text-sm text-primary">
-                Learn more
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </span>
-            </GlassCard>
-            </OpenableCard>
+                <h3 className="relative mt-3 font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">{s.title}</h3>
+                <p className="relative mt-2 flex-1 text-sm text-muted-foreground">{s.summary}</p>
+                <span className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary group-hover:underline">
+                  View in Solutions
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+                </span>
+              </GlassCard>
+            </Link>
           </Reveal>
         ))}
       </div>
-      <SolutionDetailModal solution={active} onClose={() => setActive(null)} />
     </Section>
   );
 }
