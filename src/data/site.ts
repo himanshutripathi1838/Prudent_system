@@ -15,14 +15,14 @@ export const COMPANY = {
  * instead of displaying an unverified phone number or address.
  */
 export const CONTACT = {
-  addressLine: "18, Vaishali Nagar, Kotra Sultanabad, Bhopal, Madhya Pradesh 462003, India",
+  addressLine: "18, Vaishali Nagar, Bhopal, Madhya Pradesh 462003, India",
   addressVerified: true,
   phone: "+91 95895 85072" as string | null,
   landline: "0731-4066043" as string | null,
   email: "contact@prusys.com" as string | null,
   officialContactUrl: "https://prusys.com/",
   mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=18%2C+Vaishali+Nagar%2C+Kotra+Sultanabad%2C+Bhopal%2C+Madhya+Pradesh+462003",
+    "https://www.google.com/maps/search/?api=1&query=18%2C+Vaishali+Nagar%2C+Bhopal%2C+Madhya+Pradesh+462003",
 };
 
 export const SOCIALS: { label: string; url: string }[] = [

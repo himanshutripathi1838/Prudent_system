@@ -132,7 +132,7 @@ function ContactPage() {
 
               <div className="flex flex-wrap items-center justify-between gap-3 bg-surface/80 p-5">
                 <div>
-                  <p className="font-display text-sm font-semibold text-foreground">18, Vaishali Nagar, Kotra Sultanabad</p>
+                  <p className="font-display text-sm font-semibold text-foreground">18, Vaishali Nagar</p>
                   <p className="text-xs text-muted-foreground">Bhopal, Madhya Pradesh 462003, India</p>
                 </div>
                 <a
