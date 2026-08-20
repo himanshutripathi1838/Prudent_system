@@ -18,6 +18,7 @@ import { Loader } from "@/components/site/Loader";
 import { Chatbot } from "@/components/site/Chatbot";
 import ParticlesComponent from "@/components/ui/particles-bg";
 import { COMPANY } from "@/data/site";
+import { EyeTransitionProvider } from "@/components/site/EyeTransitionOverlay";
 
 function NotFoundComponent() {
   return (
@@ -145,6 +146,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <EyeTransitionProvider>
       <MotionConfig reducedMotion="user">
       <ParticlesComponent />
       <SmoothScroll />
@@ -164,6 +166,7 @@ function RootComponent() {
       <ScrollToTop />
       <Chatbot />
       </MotionConfig>
+      </EyeTransitionProvider>
     </QueryClientProvider>
   );
 }

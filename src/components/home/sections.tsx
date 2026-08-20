@@ -19,6 +19,7 @@ import { TECH_TAGS } from "@/data/expertise";
 import { CLIENTS } from "@/data/company";
 
 import { WordsStagger } from "@/components/ui/words-stagger";
+import { useEyeTransition } from "@/components/site/EyeTransitionOverlay";
 
 const ICONS: Record<string, typeof Cpu> = {
   Router, Code2, LayoutDashboard, BrainCircuit, Cpu, Cloud, Database, Network, ShieldCheck, Activity, Sparkles, GitBranch,
@@ -327,6 +328,8 @@ export function SolutionPreview() {
 }
 
 export function SolutionPortfolio() {
+  const { openSolutionWithEyeTransition } = useEyeTransition();
+
   return (
     <Section className="bg-surface/30">
       <SectionHeading
@@ -337,11 +340,17 @@ export function SolutionPortfolio() {
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SOLUTIONS.map((s, i) => (
           <Reveal key={s.slug} delay={(i % 3) * 0.05}>
-            <Link
-              to="/solutions"
-              search={{ open: s.slug }}
-              onClick={() => scrollToTop()}
-              className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-xl"
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => openSolutionWithEyeTransition(s.slug)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openSolutionWithEyeTransition(s.slug);
+                }
+              }}
+              className="block h-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-xl"
             >
               <GlassCard className="group relative flex h-full flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40" interactive>
                 <DataFlowBg nodes={s.architecture} seed={i} className="opacity-40" />
@@ -371,7 +380,7 @@ export function SolutionPortfolio() {
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                 </span>
               </GlassCard>
-            </Link>
+            </div>
           </Reveal>
         ))}
       </div>
