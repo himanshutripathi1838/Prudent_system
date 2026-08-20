@@ -1,10 +1,10 @@
 /**
- * Exact mapping of solution slugs to official downloaded product images.
+ * Exact mapping of solution slugs to official high-res uploaded product photos.
  * Only solutions with authentic official images are included here.
  */
 export const SOLUTION_IMAGES: Record<string, string> = {
   "gps-oms": "/solutions/gps-oms.jpg",
-  "gps-based-oliver-g": "/solutions/oliver-g.jpg",
+  "gps-based-oliver-g": "/solutions/oliver-g.png",
   "gps-based-oliver-ghx": "/solutions/oliver-ghx.jpg",
   "gps-based-speedometer": "/solutions/speedometer.jpg",
   "water-level-monitoring-system": "/solutions/water-level.jpg",

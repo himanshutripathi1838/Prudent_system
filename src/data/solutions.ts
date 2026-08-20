@@ -68,7 +68,7 @@ export const SOLUTIONS: Solution[] = [
     title: "GPS Based OLIVER G",
     category: "Railways",
     industry: "Railways",
-    image: "/solutions/oliver-g.jpg",
+    image: "/solutions/oliver-g.png",
     summary: "On-Line Track Acceleration & Oscillation Recording System (OLIVER G) engineered for track inspection coaches and locomotives.",
     problem: "Real-time track acceleration monitoring requires portable, high-accuracy instruments that log speed, acceleration, and location simultaneously.",
     approach: "Compact embedded system combining high-resolution ADC, digital signal processing (DSP), and GNSS tracking to record track geometry irregularities.",
