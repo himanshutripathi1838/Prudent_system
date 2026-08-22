@@ -28,19 +28,43 @@ const TOPICS: TopicAnswer[] = [
 
   // 1. Definition of IoT Gateway (Page 1)
   {
-    keywords: ["what is an iot gateway", "iot gateway definition", "gateway simple terms", "bridge field sensors"],
+    keywords: [
+      "what is an iot gateway",
+      "iot gateway definition",
+      "gateway simple terms",
+      "bridge field sensors",
+    ],
     shortResponse: `An **IoT Gateway** is a hardware & software device acting as a bridge between field sensors/machines and the cloud platform.\n\n**Simple Terms:**\n\`Sensors & Machines → IoT Gateway → Cloud Dashboard / Mobile App\`\n\nIt collects data from multiple sensors, processes it locally, and securely transmits it to the cloud.`,
   },
 
   // 2. Why IoT Gateway is Needed & Protocol Conversion (Page 1 & 3)
   {
-    keywords: ["why iot gateway needed", "protocol conversion", "modbus rtu", "rs485", "can bus", "zigbee", "lora", "bluetooth", "mqtt", "https", "websockets"],
+    keywords: [
+      "why iot gateway needed",
+      "protocol conversion",
+      "modbus rtu",
+      "rs485",
+      "can bus",
+      "zigbee",
+      "lora",
+      "bluetooth",
+      "mqtt",
+      "https",
+      "websockets",
+    ],
     shortResponse: `**Why an IoT Gateway is Needed:**\nIndustrial sensors use field protocols (**Modbus RTU, RS485, CAN Bus, ZigBee, LoRa, Bluetooth**), while cloud platforms use internet protocols (**MQTT, HTTPS, TCP/IP, WebSockets**).\n\n**Protocol Mapping:**\n- RS485 $\\rightarrow$ Converts to MQTT\n- Modbus $\\rightarrow$ Converts to HTTPS\n- CAN Bus $\\rightarrow$ Converts to TCP/IP`,
   },
 
   // 3. Typical Gateway Architecture (Page 1 & 2)
   {
-    keywords: ["gateway architecture", "ot connectivity", "it connectivity", "control center", "scada", "remote i/o"],
+    keywords: [
+      "gateway architecture",
+      "ot connectivity",
+      "it connectivity",
+      "control center",
+      "scada",
+      "remote i/o",
+    ],
     shortResponse: `**IoT Gateway Architecture:**\n\`Control Center (SCADA / Dashboard) ← IT Connectivity ← IIoT Gateway (Wired/Wireless, Routing, Local Storage, Edge AI) ← OT Connectivity ← Remote I/O (DIO/AIO), Field Devices\``,
   },
 
@@ -52,13 +76,24 @@ const TOPICS: TopicAnswer[] = [
 
   // 5. 7 Major Functions of an IoT Gateway (Page 3 - 5)
   {
-    keywords: ["7 functions", "major functions", "functions of iot gateway", "what does gateway do"],
+    keywords: [
+      "7 functions",
+      "major functions",
+      "functions of iot gateway",
+      "what does gateway do",
+    ],
     shortResponse: `**7 Major Functions of an IoT Gateway:**\n1. **Data Collection**: Collects from IMU, Temp, GPS, PLCs (e.g. 50 motors, 20 pumps, 10 compressors)\n2. **Protocol Conversion**: Modbus/RS485/CAN $\\rightarrow$ MQTT/HTTPS\n3. **Edge Computing**: Computes RMS, Peak vibration & FFT spectrum locally\n4. **Local AI Processing**: Edge AI bearing fault alerts\n5. **Local Data Storage**: Store-and-forward local logging during internet failure\n6. **Alert Generation**: Direct local Buzzer, SMS & WhatsApp alerts\n7. **Device Management**: Remote firmware updates, config & diagnostics`,
   },
 
   // 6. Edge Computing Details & Benefits (Page 3 & 4)
   {
-    keywords: ["edge computing benefits", "1000 readings", "rms vibration", "peak vibration", "fft spectrum"],
+    keywords: [
+      "edge computing benefits",
+      "1000 readings",
+      "rms vibration",
+      "peak vibration",
+      "fft spectrum",
+    ],
     shortResponse: `**Edge Computing on IoT Gateway:**\nA vibration sensor generates 1000 readings/sec. Instead of streaming raw data, the gateway computes **RMS vibration, Peak vibration, & FFT spectrum** locally.\n\n**Benefits:**\n- ⚡ Lower cellular bandwidth\n- 🚀 Sub-millisecond instant response\n- 💰 Lower cloud storage costs`,
   },
 
@@ -88,25 +123,50 @@ const TOPICS: TopicAnswer[] = [
 
   // 11. Hardware Components of an IoT Gateway (Page 5 & 6)
   {
-    keywords: ["hardware components", "gateway hardware specs", "gateway processor", "raspberry pi cm4", "esp32", "stm32", "nxp i.mx", "intel atom", "nvidia jetson"],
+    keywords: [
+      "hardware components",
+      "gateway hardware specs",
+      "gateway processor",
+      "raspberry pi cm4",
+      "esp32",
+      "stm32",
+      "nxp i.mx",
+      "intel atom",
+      "nvidia jetson",
+    ],
     shortResponse: `**IoT Gateway Hardware Specs:**\n- **Processors**: Raspberry Pi CM4, ESP32, STM32, NXP i.MX8, Intel Atom, NVIDIA Jetson\n- **Communication**: Ethernet, Wi-Fi, LoRa, ZigBee, Bluetooth, 4G LTE, 5G\n- **Interfaces**: RS232, RS485, CAN Bus, Modbus, USB, GPIO\n- **Storage**: 32GB eMMC, SSD, SD Card (Stores local DB, logs & AI models)`,
   },
 
   // 12. Example Prudent Edge Gateway (Page 6 & 7)
   {
-    keywords: ["prudent edge gateway", "gateway features", "32gb local storage", "solar compatible"],
+    keywords: [
+      "prudent edge gateway",
+      "gateway features",
+      "32gb local storage",
+      "solar compatible",
+    ],
     shortResponse: `**Prudent Edge Gateway Specs:**\n- **Interfaces**: RS485, Modbus RTU, CAN Bus, Analog/Digital Inputs\n- **Connectivity**: LoRa, Wi-Fi, 4G/5G, Ethernet\n- **Processing**: Edge AI, Local FFT analytics, Event detection\n- **Storage**: 32GB local eMMC/SSD\n- **Power**: Solar compatible with battery backup`,
   },
 
   // 13. Bridge Monitoring System Example (Page 7)
   {
-    keywords: ["bridge monitoring system", "bridge sensors", "flood risk estimation", "tilt sensor"],
+    keywords: [
+      "bridge monitoring system",
+      "bridge sensors",
+      "flood risk estimation",
+      "tilt sensor",
+    ],
     shortResponse: `**Bridge Monitoring System Architecture:**\n- **Sensors**: Water level, Vibration, Wind speed, Tilt sensors\n- **Gateway**: Collects data every minute; executes threshold checks, trend analysis & flood risk estimation\n- **Cloud Dashboard**: Displays bridge structural health, water level trends, flood alerts & historical reports.`,
   },
 
   // 14. Machine Health Monitoring Gateway Example (Page 7 & 8)
   {
-    keywords: ["machine health monitoring gateway", "motor sensors", "health score", "remaining life estimate"],
+    keywords: [
+      "machine health monitoring gateway",
+      "motor sensors",
+      "health score",
+      "remaining life estimate",
+    ],
     shortResponse: `**Machine Health Monitoring System:**\n- **Sensors**: IMU vibration, Temperature, Current CT coils\n- **Gateway Calculation**: Calculates FFT spectrum, Health score & Bearing fault indicators\n- **Dashboard Output**: Displays Machine condition, Remaining Useful Life (RUL) estimate & Maintenance recommendations.`,
   },
 
@@ -154,13 +214,28 @@ const TOPICS: TopicAnswer[] = [
 
   // 22. OTA Security Features (Page 15, 25 & 26)
   {
-    keywords: ["ota security features", "secure boot", "digital signature verification", "rsa-2048", "ecc", "https tls", "mqtts", "device authentication"],
+    keywords: [
+      "ota security features",
+      "secure boot",
+      "digital signature verification",
+      "rsa-2048",
+      "ecc",
+      "https tls",
+      "mqtts",
+      "device authentication",
+    ],
     shortResponse: `**OTA Security Architecture:**\n- 🛡️ **Secure Boot**: Only trusted firmware runs\n- ✍️ **Digital Signature**: Signed by Prudent Systems (RSA-2048 or ECC)\n- 🔒 **Encrypted Transfer**: HTTPS TLS or MQTTS\n- 🔑 **Device Authentication**: Unique SSL Certificate per device prevents unauthorized malicious updates`,
   },
 
   // 23. OTA Dashboard Features & Example Table (Page 15 & 16)
   {
-    keywords: ["ota dashboard features", "device inventory", "mhm-001 bhopal", "mhm-002 indore", "mhm-003 nagpur"],
+    keywords: [
+      "ota dashboard features",
+      "device inventory",
+      "mhm-001 bhopal",
+      "mhm-002 indore",
+      "mhm-003 nagpur",
+    ],
     shortResponse: `**OTA Dashboard Features:**\n- **Device Inventory**: Device ID, Location, Firmware Version\n- **Update Control**: Select devices, regions, or customer sites\n- **Status Monitoring**: e.g., \`MHM-001 Bhopal (Update Available)\`, \`MHM-002 Indore (Downloading)\`, \`MHM-003 Nagpur (Updated)\``,
   },
 
@@ -202,13 +277,28 @@ const TOPICS: TopicAnswer[] = [
 
   // 30. Suggested OTA Tech Stack (Page 27)
   {
-    keywords: ["suggested ota tech stack", "freertos", "docker containers", "ubuntu linux", "mosquitto", "postgresql", "minio", "react", "flutter"],
-    shortResponse: `**Complete OTA Tech Stack:**\n- **Device Layer**: ESP32, STM32, FreeRTOS\n- **Communication**: MQTT, HTTPS, TLS Encryption\n- **Gateway**: Raspberry Pi CM4, Docker Containers\n- **Cloud**: Ubuntu Linux, Mosquitto MQTT Broker, Node.js/Python, PostgreSQL\n- **Storage**: AWS S3 Compatible / MinIO\n- **Dashboard**: React, Flutter Mobile App`,
+    keywords: [
+      "suggested ota tech stack",
+      "freertos",
+      "docker containers",
+      "ubuntu linux",
+      "mosquitto",
+      "postgresql",
+      "minio",
+      "react",
+      "flutter",
+    ],
+    shortResponse: `**Complete OTA Tech Stack:**\n- **Device Layer**: ESP32, STM32, FreeRTOS\n- **Communication**: MQTT, HTTPS, TLS Encryption\n- **Gateway**: Raspberry Pi CM4, Docker Containers\n- **Cloud**: Ubuntu Linux, Mosquitto MQTT, Node.js/Python, PostgreSQL\n- **Storage**: AWS S3 Compatible / MinIO\n- **Dashboard**: React, Flutter Mobile App`,
   },
 
   // 31. Business Value & Commercial Advantage (Page 17 & 28)
   {
-    keywords: ["business value of ota", "without ota vs with ota", "commercial advantage", "single scalable platform"],
+    keywords: [
+      "business value of ota",
+      "without ota vs with ota",
+      "commercial advantage",
+      "single scalable platform",
+    ],
     shortResponse: `**Business Value of OTA:**\n- ❌ **Without OTA**: Expensive site visits, travel costs, slow deployments.\n- ✅ **With OTA**: Instant remote upgrades, instant bug fixes, lower maintenance costs, effortless scaling to thousands of devices.\n\nCreates a **Single Scalable Industry 4.0 Platform** supporting Railways, Machine Health, Bridges, Water, Weather & Asset Tracking!`,
   },
 
@@ -230,19 +320,54 @@ const TOPICS: TopicAnswer[] = [
 
   // 34. Web Development & Cloud Engine
   {
-    keywords: ["web", "web development", "website", "react", "frontend", "backend", "dashboard", "html", "css", "javascript", "typescript", "api", "web app"],
+    keywords: [
+      "web",
+      "web development",
+      "website",
+      "react",
+      "frontend",
+      "backend",
+      "dashboard",
+      "html",
+      "css",
+      "javascript",
+      "typescript",
+      "api",
+      "web app",
+    ],
     shortResponse: `**Web Development & Cloud Dashboards**:\nWe build fast, responsive web applications, real-time telemetry dashboards, REST APIs, and monitoring UI using **React, TypeScript, Tailwind CSS, and Cloud Platforms** to visualize live IoT machine data and control hardware remotely.\n\nExplore our [Solutions Catalog](/solutions).`,
   },
 
   // 35. Company & Overview
   {
-    keywords: ["prudent", "company", "about", "who are you", "prusys", "bhopal", "kya hai", "kon hai", "kaha hai"],
+    keywords: [
+      "prudent",
+      "company",
+      "about",
+      "who are you",
+      "prusys",
+      "bhopal",
+      "kya hai",
+      "kon hai",
+      "kaha hai",
+    ],
     shortResponse: `**Prudent Systems Pvt. Ltd.** is an ISO-certified technology company based in **Bhopal, MP, India**.\n\nWe build **Industry 4.0 Systems, Universal IoT Gateways, Modular DAQ, Edge AI, Web Dashboards, and Railway Electronics** (GPS OMS & Digital Speedometers).\n\n📍 Bhopal, MP | 📞 ${CONTACT.phone} | 📧 ${CONTACT.email}\nLearn more on our [About Page](/about).`,
   },
 
   // 36. Contact Info
   {
-    keywords: ["contact", "email", "phone", "address", "location", "office", "call", "reach", "baat", "number"],
+    keywords: [
+      "contact",
+      "email",
+      "phone",
+      "address",
+      "location",
+      "office",
+      "call",
+      "reach",
+      "baat",
+      "number",
+    ],
     shortResponse: `📍 **Office**: ${CONTACT.addressLine}\n📞 **Mobile**: ${CONTACT.phone}\n☎️ **Landline**: ${CONTACT.landline}\n📧 **Email**: ${CONTACT.email}\n🗺️ **Location**: [Open in Google Maps](${CONTACT.mapsUrl})\n\nFill out our enquiry form on the [Contact Page](/contact).`,
   },
 
@@ -254,18 +379,105 @@ const TOPICS: TopicAnswer[] = [
 ];
 
 export const ALLOWED_DOMAIN_KEYWORDS = [
-  "iot", "iiot", "ai", "ml", "daq", "ota", "web", "react", "dashboard", "sensor",
-  "embedded", "prudent", "railway", "speedometer", "oliver", "oms", "firmware",
-  "microcontroller", "esp32", "stm32", "manufacturing", "industry 4.0", "bhopal",
-  "contact", "phone", "email", "about", "solution", "product", "machine", "vibration",
-  "temperature", "energy", "digital twin", "predictive", "quality", "tracking", "water",
-  "weather", "light", "toe load", "thermometer", "train", "bogie", "route", "gateway",
-  "modbus", "can bus", "rs485", "mqtt", "oee", "retrofit", "msme", "cnc", "a/b partition",
-  "rollback", "secure boot", "digital signature", "m2m", "vision", "fft", "rms", "kurtosis",
-  "evolution", "1.0", "2.0", "3.0", "4.0", "delta ota", "full ota", "tflite", "cm4", "jetson",
-  "nxp", "agv", "amr", "cobot", "scada", "mes", "erp", "bridge", "anemometer", "7 functions",
-  "store and forward", "mhm-001", "rw001", "bearing_model_v3", "85%", "95%", "greetings",
-  "hi", "hello", "hey", "hlo", "namaste", "good morning", "good afternoon", "good evening", "good night"
+  "iot",
+  "iiot",
+  "ai",
+  "ml",
+  "daq",
+  "ota",
+  "web",
+  "react",
+  "dashboard",
+  "sensor",
+  "embedded",
+  "prudent",
+  "railway",
+  "speedometer",
+  "oliver",
+  "oms",
+  "firmware",
+  "microcontroller",
+  "esp32",
+  "stm32",
+  "manufacturing",
+  "industry 4.0",
+  "bhopal",
+  "contact",
+  "phone",
+  "email",
+  "about",
+  "solution",
+  "product",
+  "machine",
+  "vibration",
+  "temperature",
+  "energy",
+  "digital twin",
+  "predictive",
+  "quality",
+  "tracking",
+  "water",
+  "weather",
+  "light",
+  "toe load",
+  "thermometer",
+  "train",
+  "bogie",
+  "route",
+  "gateway",
+  "modbus",
+  "can bus",
+  "rs485",
+  "mqtt",
+  "oee",
+  "retrofit",
+  "msme",
+  "cnc",
+  "a/b partition",
+  "rollback",
+  "secure boot",
+  "digital signature",
+  "m2m",
+  "vision",
+  "fft",
+  "rms",
+  "kurtosis",
+  "evolution",
+  "1.0",
+  "2.0",
+  "3.0",
+  "4.0",
+  "delta ota",
+  "full ota",
+  "tflite",
+  "cm4",
+  "jetson",
+  "nxp",
+  "agv",
+  "amr",
+  "cobot",
+  "scada",
+  "mes",
+  "erp",
+  "bridge",
+  "anemometer",
+  "7 functions",
+  "store and forward",
+  "mhm-001",
+  "rw001",
+  "bearing_model_v3",
+  "85%",
+  "95%",
+  "greetings",
+  "hi",
+  "hello",
+  "hey",
+  "hlo",
+  "namaste",
+  "good morning",
+  "good afternoon",
+  "good evening",
+  "good night",
 ];
 
 export const SYSTEM_INSTRUCTION = `You are the AI Assistant for Prudent Systems Pvt. Ltd. (Bhopal, MP, India).
@@ -308,21 +520,67 @@ export function getTimeBasedGreeting(): string {
 }
 
 export function isGreeting(userQuery: string): boolean {
-  const q = userQuery.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "");
+  const q = userQuery
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "");
   if (!q) return true;
-  
-  const QUESTION_WORDS = ["what", "how", "why", "who", "where", "explain", "tell", "cost", "price", "sensor", "iot", "ai", "ml", "web", "daq", "ota", "prudent", "kya", "kaise", "kaha", "oee", "gateway", "retrofit", "m2m", "fft", "rms", "agv", "amr", "cobot", "scada", "mes", "erp"];
+
+  const QUESTION_WORDS = [
+    "what",
+    "how",
+    "why",
+    "who",
+    "where",
+    "explain",
+    "tell",
+    "cost",
+    "price",
+    "sensor",
+    "iot",
+    "ai",
+    "ml",
+    "web",
+    "daq",
+    "ota",
+    "prudent",
+    "kya",
+    "kaise",
+    "kaha",
+    "oee",
+    "gateway",
+    "retrofit",
+    "m2m",
+    "fft",
+    "rms",
+    "agv",
+    "amr",
+    "cobot",
+    "scada",
+    "mes",
+    "erp",
+  ];
   if (QUESTION_WORDS.some((w) => q.includes(w))) {
     return false;
   }
 
-  const GREETING_REGEX = /^(hi+|hello+|helo+|hey+|hlo+|hlw+|hy+|namaste+|namaskar+|greetings+)(\s.*)?$/i;
+  const GREETING_REGEX =
+    /^(hi+|hello+|helo+|hey+|hlo+|hlw+|hy+|namaste+|namaskar+|greetings+)(\s.*)?$/i;
   if (GREETING_REGEX.test(q)) return true;
-  if (q.startsWith("good morning") || q.startsWith("good afternoon") || q.startsWith("good evening") || q.startsWith("good night")) return true;
+  if (
+    q.startsWith("good morning") ||
+    q.startsWith("good afternoon") ||
+    q.startsWith("good evening") ||
+    q.startsWith("good night")
+  )
+    return true;
   return false;
 }
 
-export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatMessage[] = []): Promise<string> {
+export async function getGeminiBotResponse(
+  userQuery: string,
+  chatHistory: ChatMessage[] = [],
+): Promise<string> {
   if (isGreeting(userQuery)) {
     return getTimeBasedGreeting();
   }
@@ -334,7 +592,11 @@ export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatM
       const contents = [
         {
           role: "user",
-          parts: [{ text: `${SYSTEM_INSTRUCTION}\n\nUser Question: ${userQuery}\n\nProvide a SHORT, CRISP response:` }],
+          parts: [
+            {
+              text: `${SYSTEM_INSTRUCTION}\n\nUser Question: ${userQuery}\n\nProvide a SHORT, CRISP response:`,
+            },
+          ],
         },
       ];
 
@@ -344,7 +606,7 @@ export async function getGeminiBotResponse(userQuery: string, chatHistory: ChatM
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contents }),
-        }
+        },
       );
 
       if (response.ok) {
